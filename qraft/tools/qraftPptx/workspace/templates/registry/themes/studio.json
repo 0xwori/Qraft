@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "studio",
+  "name": "Studio",
+  "sourceTemplateId": "studio",
+  "colors": {
+    "bg": "#1C1C1C",
+    "bg_alt": "#242422",
+    "fg": "#F5D200",
+    "accent": "#F5D200",
+    "bg_light": "#F5D200",
+    "fg_light": "#1C1C1C",
+    "border_dark": "#2E2E2C",
+    "border_light": "rgba(28,28,28,0.18)"
+  },
+  "typography": {
+    "display": "Barlow, Noto Sans SC, sans-serif",
+    "body": "Barlow, Noto Sans SC, sans-serif",
+    "mono": "IBM Plex Mono, ui-monospace, monospace"
+  },
+  "spacing": {
+    "slidePadding": 96,
+    "grid": 8,
+    "radius": 0
+  },
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  },
+  "description": "High-contrast design-studio presentation system with near-black canvas, acid-yellow type, massive uppercase Barlow headlines, IBM Plex Mono metadata, flat hairlines, and no decorative effects.",
+  "fontImports": [
+    "https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+  ]
+}

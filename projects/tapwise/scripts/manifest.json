@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "scripts": [
+    {
+      "id": "atlassian-basic-auth",
+      "name": "Generate Atlassian Basic Auth",
+      "command": "scripts/atlassian-basic-auth.sh",
+      "mutatesExternalSystem": false,
+      "requiresConfirmation": false
+    }
+  ]
+}

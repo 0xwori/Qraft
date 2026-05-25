@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "timeline",
+  "name": "Timeline",
+  "purpose": "Process flow, milestones, or roadmap.",
+  "slots": [
+    {
+      "id": "title",
+      "name": "Title",
+      "required": true,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 76,
+        "y": 54,
+        "width": 850,
+        "height": 68
+      }
+    },
+    {
+      "id": "flow",
+      "name": "Flow",
+      "required": true,
+      "supportedBlockTypes": [
+        "diagram",
+        "text",
+        "table"
+      ],
+      "defaultFrame": {
+        "x": 88,
+        "y": 164,
+        "width": 1080,
+        "height": 420
+      }
+    }
+  ],
+  "defaultBlocks": [
+    {
+      "type": "text",
+      "slot": "title",
+      "textRole": "title",
+      "text": "Timeline"
+    },
+    {
+      "type": "diagram",
+      "slot": "flow",
+      "diagramType": "mermaid",
+      "source": "flowchart LR\nA[Start] --> B[Build]\nB --> C[Validate]\nC --> D[Launch]"
+    }
+  ],
+  "themeTokens": [
+    "colors.bg",
+    "colors.primary",
+    "colors.text",
+    "typography.display",
+    "typography.body"
+  ],
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  }
+}

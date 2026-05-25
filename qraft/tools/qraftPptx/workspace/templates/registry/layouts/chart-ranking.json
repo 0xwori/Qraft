@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "chart-ranking",
+  "name": "Chart Ranking",
+  "purpose": "Horizontal ranking, comparison, or simple chart story.",
+  "slots": [
+    {
+      "id": "title",
+      "name": "Title",
+      "required": true,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 76,
+        "y": 54,
+        "width": 900,
+        "height": 66
+      }
+    },
+    {
+      "id": "chart",
+      "name": "Chart",
+      "required": true,
+      "supportedBlockTypes": [
+        "chart"
+      ],
+      "defaultFrame": {
+        "x": 108,
+        "y": 164,
+        "width": 1020,
+        "height": 420
+      }
+    }
+  ],
+  "defaultBlocks": [
+    {
+      "type": "text",
+      "slot": "title",
+      "textRole": "title",
+      "text": "Ranked comparison"
+    },
+    {
+      "type": "chart",
+      "slot": "chart",
+      "chartType": "bar",
+      "title": "Ranking",
+      "data": [
+        {
+          "name": "Option A",
+          "value": 72
+        },
+        {
+          "name": "Option B",
+          "value": 58
+        },
+        {
+          "name": "Option C",
+          "value": 41
+        }
+      ],
+      "encoding": {
+        "x": "name",
+        "y": "value"
+      }
+    }
+  ],
+  "themeTokens": [
+    "colors.bg",
+    "colors.primary",
+    "colors.text",
+    "typography.display",
+    "typography.body"
+  ],
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  }
+}

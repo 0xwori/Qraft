@@ -1,0 +1,38 @@
+{
+  "name": "qraft",
+  "version": "0.1.0",
+  "description": "A Codex work-agent plugin and local workfolder system for project context, scripts, tools, and disciplined delivery.",
+  "author": {
+    "name": "Wouter van Rijmenam"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "qraft",
+    "codex",
+    "work-agent",
+    "projects",
+    "presentations"
+  ],
+  "skills": "./qraft/skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Qraft",
+    "shortDescription": "Project work-agent structure, scripts, and shared tools for Codex",
+    "longDescription": "Qraft helps Codex work per project with the right context, assets, scripts, MCP setup, and shared tools such as Micro-Keynote presentations.",
+    "developerName": "Wouter van Rijmenam",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Qraft",
+      "Qraft init",
+      "Qraft project list",
+      "Qraft project Tapwise",
+      "Qraft presentations"
+    ],
+    "brandColor": "#0E7C66",
+    "screenshots": []
+  }
+}

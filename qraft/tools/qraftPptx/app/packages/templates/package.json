@@ -1,0 +1,35 @@
+{
+  "name": "@micro-keynote/templates",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./soft-editorial": "./src/soft-editorial/index.ts",
+    "./soft-editorial/fixtures": "./src/soft-editorial/fixtures.tsx",
+    "./soft-editorial/styles.css": "./src/soft-editorial/styles.css",
+    "./block-frame": "./src/block-frame/index.ts",
+    "./block-frame/fixtures": "./src/block-frame/fixtures.tsx",
+    "./block-frame/styles.css": "./src/block-frame/styles.css",
+    "./studio": "./src/studio/index.ts",
+    "./studio/fixtures": "./src/studio/fixtures.tsx",
+    "./studio/styles.css": "./src/studio/styles.css",
+    "./broadside": "./src/broadside/index.ts",
+    "./broadside/fixtures": "./src/broadside/fixtures.tsx",
+    "./broadside/styles.css": "./src/broadside/styles.css"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@micro-keynote/deck-runtime": "*",
+    "@types/react": "^18.3.0",
+    "react": "^18.3.1",
+    "typescript": "^5.9.3"
+  }
+}

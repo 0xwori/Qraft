@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "id": "stat-dashboard",
+  "name": "Stat Dashboard",
+  "purpose": "Dense executive dashboard with six stat cards.",
+  "slots": [
+    {
+      "id": "title",
+      "name": "Title",
+      "required": true,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 76,
+        "y": 52,
+        "width": 820,
+        "height": 64
+      }
+    },
+    {
+      "id": "dashboard",
+      "name": "Dashboard",
+      "required": true,
+      "supportedBlockTypes": [
+        "metric",
+        "chart",
+        "table"
+      ],
+      "defaultFrame": {
+        "x": 76,
+        "y": 148,
+        "width": 1128,
+        "height": 474
+      }
+    }
+  ],
+  "defaultBlocks": [
+    {
+      "type": "text",
+      "slot": "title",
+      "textRole": "title",
+      "text": "Dashboard"
+    },
+    {
+      "type": "chart",
+      "slot": "dashboard",
+      "chartType": "bar",
+      "title": "Illustrative data",
+      "data": [
+        {
+          "name": "A",
+          "value": 42
+        },
+        {
+          "name": "B",
+          "value": 64
+        },
+        {
+          "name": "C",
+          "value": 51
+        }
+      ],
+      "encoding": {
+        "x": "name",
+        "y": "value"
+      }
+    }
+  ],
+  "themeTokens": [
+    "colors.bg",
+    "colors.primary",
+    "colors.text",
+    "typography.display",
+    "typography.body"
+  ],
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  }
+}

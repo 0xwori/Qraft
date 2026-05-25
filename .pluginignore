@@ -1,0 +1,13 @@
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.vite/
+**/.vite/
+*.tsbuildinfo
+coverage/
+**/.env
+**/.env.*
+!**/.env.example
+projects/*/outputs/
+projects/*/tools/*/exports/

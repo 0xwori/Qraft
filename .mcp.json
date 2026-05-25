@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "qraftPptx": {
+      "command": "bash",
+      "args": [
+        "./qraft/tools/qraftPptx/scripts/start-qraftPptx-mcp.sh"
+      ]
+    }
+  }
+}

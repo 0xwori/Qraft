@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "id": "two-column",
+  "name": "Two Column Split",
+  "purpose": "Narrative on one side, evidence or visual on the other.",
+  "slots": [
+    {
+      "id": "title",
+      "name": "Title",
+      "required": true,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 76,
+        "y": 54,
+        "width": 940,
+        "height": 68
+      }
+    },
+    {
+      "id": "left",
+      "name": "Left",
+      "required": true,
+      "supportedBlockTypes": [
+        "text",
+        "quote",
+        "metric"
+      ],
+      "defaultFrame": {
+        "x": 76,
+        "y": 164,
+        "width": 510,
+        "height": 430
+      }
+    },
+    {
+      "id": "right",
+      "name": "Right",
+      "required": true,
+      "supportedBlockTypes": [
+        "image",
+        "chart",
+        "diagram",
+        "table",
+        "placeholder"
+      ],
+      "defaultFrame": {
+        "x": 652,
+        "y": 164,
+        "width": 552,
+        "height": 430
+      }
+    }
+  ],
+  "defaultBlocks": [
+    {
+      "type": "text",
+      "slot": "title",
+      "textRole": "title",
+      "text": "A clear split argument"
+    },
+    {
+      "type": "text",
+      "slot": "left",
+      "textRole": "body",
+      "text": "Use this side for the message, rationale, and decision."
+    },
+    {
+      "type": "placeholder",
+      "slot": "right",
+      "label": "Add image, chart, or diagram",
+      "intendedType": "image"
+    }
+  ],
+  "themeTokens": [
+    "colors.bg",
+    "colors.primary",
+    "colors.text",
+    "typography.display",
+    "typography.body"
+  ],
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  }
+}

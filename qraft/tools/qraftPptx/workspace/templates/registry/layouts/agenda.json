@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "agenda",
+  "name": "Agenda",
+  "purpose": "Structured agenda or table of contents.",
+  "slots": [
+    {
+      "id": "title",
+      "name": "Title",
+      "required": true,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 76,
+        "y": 60,
+        "width": 760,
+        "height": 76
+      }
+    },
+    {
+      "id": "items",
+      "name": "Items",
+      "required": true,
+      "supportedBlockTypes": [
+        "text",
+        "table"
+      ],
+      "defaultFrame": {
+        "x": 96,
+        "y": 166,
+        "width": 760,
+        "height": 420
+      }
+    }
+  ],
+  "defaultBlocks": [
+    {
+      "type": "text",
+      "slot": "title",
+      "textRole": "title",
+      "text": "Agenda"
+    },
+    {
+      "type": "text",
+      "slot": "items",
+      "textRole": "body",
+      "text": "01 Context\n02 Insight\n03 Direction\n04 Decision"
+    }
+  ],
+  "themeTokens": [
+    "colors.bg",
+    "colors.primary",
+    "colors.text",
+    "typography.display",
+    "typography.body"
+  ],
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  }
+}

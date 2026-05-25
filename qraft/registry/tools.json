@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "tools": [
+    {
+      "id": "qraftPptx",
+      "name": "qraftPptx",
+      "kind": "mcp",
+      "command": "bash qraft/tools/qraftPptx/scripts/start-qraftPptx-mcp.sh"
+    }
+  ]
+}

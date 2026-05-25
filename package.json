@@ -1,0 +1,22 @@
+{
+  "name": "qraft",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Codex work-agent plugin and local workfolder system.",
+  "scripts": {
+    "qraft:init": "bash qraft/scripts/qraft-init.sh",
+    "qraft:doctor": "bash qraft/scripts/qraft-doctor.sh",
+    "qraft:project": "bash qraft/scripts/qraft-project.sh",
+    "qraftPptx:setup": "bash qraft/tools/qraftPptx/scripts/setup.sh",
+    "qraftPptx:mcp": "bash qraft/tools/qraftPptx/scripts/start-mcp.sh",
+    "qraftPptx:ui": "bash qraft/tools/qraftPptx/scripts/start-ui.sh"
+  },
+  "keywords": [
+    "codex",
+    "plugin",
+    "work-agent",
+    "qraft"
+  ],
+  "author": "Wouter van Rijmenam",
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "detail",
+  "name": "Detail",
+  "purpose": "Structured detail slide with bullets, sub-points, or notes.",
+  "slots": [
+    {
+      "id": "title",
+      "name": "Title",
+      "required": true,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 76,
+        "y": 54,
+        "width": 960,
+        "height": 68
+      }
+    },
+    {
+      "id": "body",
+      "name": "Body",
+      "required": true,
+      "supportedBlockTypes": [
+        "text",
+        "table"
+      ],
+      "defaultFrame": {
+        "x": 96,
+        "y": 150,
+        "width": 740,
+        "height": 450
+      }
+    },
+    {
+      "id": "aside",
+      "name": "Aside",
+      "required": false,
+      "supportedBlockTypes": [
+        "metric",
+        "quote",
+        "placeholder"
+      ],
+      "defaultFrame": {
+        "x": 900,
+        "y": 166,
+        "width": 270,
+        "height": 390
+      }
+    }
+  ],
+  "defaultBlocks": [
+    {
+      "type": "text",
+      "slot": "title",
+      "textRole": "title",
+      "text": "Detailed analysis"
+    },
+    {
+      "type": "text",
+      "slot": "body",
+      "textRole": "body",
+      "text": "Primary point\nSupporting evidence\nOperational implication"
+    },
+    {
+      "type": "metric",
+      "slot": "aside",
+      "value": "1",
+      "label": "Key takeaway",
+      "description": "Use the aside for emphasis."
+    }
+  ],
+  "themeTokens": [
+    "colors.bg",
+    "colors.primary",
+    "colors.text",
+    "typography.display",
+    "typography.body"
+  ],
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  }
+}

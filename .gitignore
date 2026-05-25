@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Secrets
+.env
+**/.env
+**/.env.*
+!**/.env.example
+
+# Node and build output
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.vite/
+**/.vite/
+*.tsbuildinfo
+
+# Common local output
+.cache/
+build/
+coverage/

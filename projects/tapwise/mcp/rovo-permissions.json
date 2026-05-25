@@ -1,0 +1,140 @@
+{
+  "server": "atlassian-rovo-tapwise",
+  "product": "Atlassian Rovo MCP Server",
+  "jiraInstance": "https://tapwiseai.atlassian.net/",
+  "permissionMeanings": {
+    "allow": "The agent may use this tool without asking first.",
+    "ask": "The agent must ask before using this tool."
+  },
+  "interactiveTools": [
+    {
+      "tool": "Retrieve Confluence page",
+      "permission": "ask"
+    },
+    {
+      "tool": "Search Confluence with CQL",
+      "permission": "allow"
+    },
+    {
+      "tool": "Get issue",
+      "permission": "ask"
+    },
+    {
+      "tool": "Update issue",
+      "permission": "ask"
+    },
+    {
+      "tool": "Create issue",
+      "permission": "ask"
+    },
+    {
+      "tool": "Transition issue",
+      "permission": "allow"
+    },
+    {
+      "tool": "Search with JQL",
+      "permission": "ask"
+    }
+  ],
+  "readOnlyTools": [
+    {
+      "tool": "Get current user info",
+      "permission": "allow"
+    },
+    {
+      "tool": "List accessible resources",
+      "permission": "allow"
+    },
+    {
+      "tool": "Get spaces",
+      "permission": "allow"
+    },
+    {
+      "tool": "Get pages in space",
+      "permission": "ask"
+    },
+    {
+      "tool": "Get page comments",
+      "permission": "ask"
+    },
+    {
+      "tool": "List page inline comments",
+      "permission": "ask"
+    },
+    {
+      "tool": "Get comment replies",
+      "permission": "ask"
+    },
+    {
+      "tool": "List page descendants",
+      "permission": "allow"
+    },
+    {
+      "tool": "Get transitions",
+      "permission": "allow"
+    },
+    {
+      "tool": "Get remote links",
+      "permission": "allow"
+    },
+    {
+      "tool": "Get projects",
+      "permission": "allow"
+    },
+    {
+      "tool": "Get issue types",
+      "permission": "allow"
+    },
+    {
+      "tool": "Get field metadata",
+      "permission": "allow"
+    },
+    {
+      "tool": "Lookup users",
+      "permission": "allow"
+    },
+    {
+      "tool": "Get issue link types",
+      "permission": "allow"
+    },
+    {
+      "tool": "Rovo Search Jira and Confluence",
+      "permission": "allow"
+    },
+    {
+      "tool": "Fetch content with ARI (beta)",
+      "permission": "allow"
+    }
+  ],
+  "writeDeleteTools": [
+    {
+      "tool": "Create Confluence page",
+      "permission": "ask"
+    },
+    {
+      "tool": "Update Confluence page",
+      "permission": "ask"
+    },
+    {
+      "tool": "Create Confluence footer comment",
+      "permission": "ask"
+    },
+    {
+      "tool": "Create Confluence inline comment",
+      "permission": "ask"
+    },
+    {
+      "tool": "Add comment",
+      "permission": "ask"
+    },
+    {
+      "tool": "Add or update worklog",
+      "permission": "ask"
+    },
+    {
+      "tool": "Create issue link",
+      "permission": "ask",
+      "note": "Set to ask because this is a write/delete tool."
+    }
+  ]
+}

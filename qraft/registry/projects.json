@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "projects": [
+    {
+      "id": "tapwise",
+      "name": "Tapwise",
+      "root": "projects/tapwise",
+      "tools": [
+        "qraftPptx"
+      ],
+      "scripts": [
+        "atlassian-basic-auth"
+      ]
+    }
+  ]
+}

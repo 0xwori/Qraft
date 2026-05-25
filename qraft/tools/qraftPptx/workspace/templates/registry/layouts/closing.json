@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "closing",
+  "name": "Closing",
+  "purpose": "Final call-to-action or decision slide.",
+  "slots": [
+    {
+      "id": "title",
+      "name": "Title",
+      "required": true,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 96,
+        "y": 176,
+        "width": 770,
+        "height": 128
+      }
+    },
+    {
+      "id": "subtitle",
+      "name": "Subtitle",
+      "required": false,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 96,
+        "y": 326,
+        "width": 650,
+        "height": 88
+      }
+    },
+    {
+      "id": "contact",
+      "name": "Contact",
+      "required": false,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 96,
+        "y": 530,
+        "width": 500,
+        "height": 54
+      }
+    }
+  ],
+  "defaultBlocks": [
+    {
+      "type": "text",
+      "slot": "title",
+      "textRole": "title",
+      "text": "Decision and next step"
+    },
+    {
+      "type": "text",
+      "slot": "subtitle",
+      "textRole": "subtitle",
+      "text": "Close with the action you want from the room."
+    }
+  ],
+  "themeTokens": [
+    "colors.bg",
+    "colors.primary",
+    "colors.text",
+    "typography.display",
+    "typography.body"
+  ],
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  }
+}

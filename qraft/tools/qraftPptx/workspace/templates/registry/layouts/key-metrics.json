@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "key-metrics",
+  "name": "Key Metrics",
+  "purpose": "Three large metrics with concise supporting copy.",
+  "slots": [
+    {
+      "id": "title",
+      "name": "Title",
+      "required": true,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 76,
+        "y": 56,
+        "width": 800,
+        "height": 72
+      }
+    },
+    {
+      "id": "metric-1",
+      "name": "Metric 1",
+      "required": true,
+      "supportedBlockTypes": [
+        "metric"
+      ],
+      "defaultFrame": {
+        "x": 76,
+        "y": 198,
+        "width": 330,
+        "height": 260
+      }
+    },
+    {
+      "id": "metric-2",
+      "name": "Metric 2",
+      "required": true,
+      "supportedBlockTypes": [
+        "metric"
+      ],
+      "defaultFrame": {
+        "x": 474,
+        "y": 198,
+        "width": 330,
+        "height": 260
+      }
+    },
+    {
+      "id": "metric-3",
+      "name": "Metric 3",
+      "required": true,
+      "supportedBlockTypes": [
+        "metric"
+      ],
+      "defaultFrame": {
+        "x": 872,
+        "y": 198,
+        "width": 330,
+        "height": 260
+      }
+    }
+  ],
+  "defaultBlocks": [
+    {
+      "type": "text",
+      "slot": "title",
+      "textRole": "title",
+      "text": "Key metrics"
+    },
+    {
+      "type": "metric",
+      "slot": "metric-1",
+      "value": "42%",
+      "label": "Primary metric",
+      "description": "Add the most important signal."
+    },
+    {
+      "type": "metric",
+      "slot": "metric-2",
+      "value": "3.1x",
+      "label": "Momentum",
+      "description": "Add relevant comparison."
+    },
+    {
+      "type": "metric",
+      "slot": "metric-3",
+      "value": "12",
+      "label": "Decision points",
+      "description": "Add implication."
+    }
+  ],
+  "themeTokens": [
+    "colors.bg",
+    "colors.primary",
+    "colors.text",
+    "typography.display",
+    "typography.body"
+  ],
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "soft-editorial",
+  "name": "Soft Editorial",
+  "sourceTemplateId": "soft-editorial",
+  "colors": {
+    "bg": "#F2EEDF",
+    "primary": "#2A241B",
+    "text": "#2A241B",
+    "paper": "#F2EEDF",
+    "paper-2": "#ECE6D2",
+    "ink": "#2A241B",
+    "ink-soft": "#5C5345",
+    "pink": "#E1A4C2",
+    "lemon": "#D6DD63",
+    "blush": "#E8C9B6",
+    "sage": "#B7C7A8",
+    "lilac": "#C9BEDC",
+    "card-fill": "rgba(255,255,255,0.55)",
+    "rule-soft": "rgba(42,36,27,0.18)",
+    "rule-medium": "rgba(42,36,27,0.35)"
+  },
+  "typography": {
+    "display": "Cormorant Garamond, Garamond, serif",
+    "body": "Work Sans, sans-serif",
+    "mono": "JetBrains Mono, ui-monospace, monospace"
+  },
+  "spacing": {
+    "slidePadding": 48,
+    "grid": 8,
+    "radius": 8
+  },
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  },
+  "description": "A warm magazine spread aesthetic — the kind of layout a small print quarterly with field-notes pretensions would commission. Cormorant Garamond carries every headline and ornamental moment with mixed roman and italic; Work Sans recedes into supporting body. The palette is cream paper with a quartet of pastel candy accents (dusty pink, chartreuse lemon, soft peach blush, sage green, lilac) used as colored card backgrounds. Generous rounded cards (24–36px radius) float on translucent white over the cream field. The mood is editorial calm with a sprinkling of riso-print color — closer to a literary research notebook than a corporate deck.",
+  "fontImports": [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com",
+    "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap"
+  ]
+}

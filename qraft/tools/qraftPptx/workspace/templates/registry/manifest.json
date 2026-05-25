@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-21T13:00:00.000Z",
+  "sources": [
+    "broadside",
+    "block-frame",
+    "soft-editorial",
+    "studio"
+  ],
+  "themes": [
+    "broadside",
+    "block-frame",
+    "soft-editorial",
+    "studio"
+  ],
+  "layouts": [
+    "cover",
+    "agenda",
+    "key-metrics",
+    "stat-dashboard",
+    "two-column",
+    "image-full",
+    "image-left",
+    "image-right",
+    "diagram-full",
+    "diagram-left",
+    "diagram-right",
+    "chart-ranking",
+    "quote",
+    "timeline",
+    "detail",
+    "closing"
+  ],
+  "components": []
+}

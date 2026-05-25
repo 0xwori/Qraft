@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "block-frame",
+  "name": "BlockFrame",
+  "sourceTemplateId": "block-frame",
+  "colors": {
+    "bg": "#FFFDF5",
+    "primary": "#000000",
+    "secondary": "#FE90E8",
+    "accent": "#F7CB46",
+    "text": "#000000",
+    "card": "#FFFFFF",
+    "border": "#000000",
+    "pink": "#FE90E8",
+    "blue": "#C0F7FE",
+    "green": "#99E885",
+    "yellow": "#F7CB46",
+    "cream": "#FFDC8B",
+    "black": "#000000",
+    "white": "#FFFFFF",
+    "offwhite": "#FFFDF5"
+  },
+  "typography": {
+    "display": "Inter, system-ui, sans-serif",
+    "body": "Inter, system-ui, sans-serif",
+    "mono": "Space Grotesk, ui-monospace, monospace"
+  },
+  "spacing": {
+    "slidePadding": 60,
+    "grid": 8,
+    "radius": 0
+  },
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  },
+  "description": "Neobrutalist deck system with pastel-neon color blocks, heavy black borders, hard offset shadows, square corners, and sticker-like decorative accents.",
+  "fontImports": [
+    "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+  ]
+}

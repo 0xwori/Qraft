@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "clientId": "tapwise",
+  "generatedAt": "2026-05-25T09:48:28.118Z",
+  "decks": [
+    {
+      "id": "tapwise-done-jira-stories-7058aa",
+      "title": "Tapwise Done Jira Stories",
+      "themeId": "block-frame",
+      "slideCount": 8,
+      "revision": "0001",
+      "updatedAt": "2026-05-25T09:46:37.792Z",
+      "path": "decks/tapwise-done-jira-stories-7058aa/deck.tsx"
+    }
+  ]
+}

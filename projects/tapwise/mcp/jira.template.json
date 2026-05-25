@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "atlassian-rovo-tapwise": {
+      "url": "https://mcp.atlassian.com/v1/mcp",
+      "headers": {
+        "Authorization": "Basic ${ATLASSIAN_BASIC_AUTH}"
+      }
+    }
+  },
+  "notes": {
+    "name": "Atlassian Rovo MCP for Tapwise Jira",
+    "jiraInstance": "https://tapwiseai.atlassian.net/",
+    "mcpUrl": "https://mcp.atlassian.com/v1/mcp",
+    "authMode": "Personal API token using Basic auth.",
+    "basicAuthFormat": "base64(ATLASSIAN_EMAIL:ATLASSIAN_API_TOKEN)",
+    "permissionsFile": "rovo-permissions.json",
+    "security": "Do not hardcode API tokens. Store ATLASSIAN_EMAIL, ATLASSIAN_API_TOKEN, and ATLASSIAN_BASIC_AUTH in the local .env file only."
+  }
+}

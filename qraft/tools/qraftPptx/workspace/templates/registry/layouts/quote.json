@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "quote",
+  "name": "Quote",
+  "purpose": "Large quote or executive statement with attribution.",
+  "slots": [
+    {
+      "id": "quote",
+      "name": "Quote",
+      "required": true,
+      "supportedBlockTypes": [
+        "quote"
+      ],
+      "defaultFrame": {
+        "x": 126,
+        "y": 188,
+        "width": 930,
+        "height": 300
+      }
+    },
+    {
+      "id": "source",
+      "name": "Source",
+      "required": false,
+      "supportedBlockTypes": [
+        "text"
+      ],
+      "defaultFrame": {
+        "x": 126,
+        "y": 516,
+        "width": 600,
+        "height": 58
+      }
+    }
+  ],
+  "defaultBlocks": [
+    {
+      "type": "quote",
+      "slot": "quote",
+      "quote": "Add the statement that should stay with the audience.",
+      "attribution": "Source"
+    }
+  ],
+  "themeTokens": [
+    "colors.bg",
+    "colors.primary",
+    "colors.text",
+    "typography.display",
+    "typography.body"
+  ],
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  }
+}

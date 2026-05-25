@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "tapwise-done-jira-stories-7058aa",
+  "clientId": "tapwise",
+  "title": "Tapwise Done Jira Stories",
+  "themeId": "block-frame",
+  "revision": "0001",
+  "createdAt": "2026-05-25T09:46:37.792Z",
+  "updatedAt": "2026-05-25T09:46:37.792Z",
+  "slides": [
+    {
+      "id": "slide-da20fd19",
+      "layoutId": "cover",
+      "title": "Tapwise Done Jira Stories",
+      "blocks": [
+        {
+          "id": "block-10ba474d",
+          "slot": "title",
+          "frame": {
+            "x": 96,
+            "y": 152,
+            "width": 760,
+            "height": 128
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-05-25T09:46:37.792Z",
+          "updatedAt": "2026-05-25T09:46:37.792Z",
+          "type": "text",
+          "text": "Tapwise Done Jira Stories",
+          "textRole": "title"
+        },
+        {
+          "id": "block-850b4c17",
+          "slot": "subtitle",
+          "frame": {
+            "x": 96,
+            "y": 304,
+            "width": 624,
+            "height": 88
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-05-25T09:46:37.792Z",
+          "updatedAt": "2026-05-25T09:46:37.792Z",
+          "type": "text",
+          "text": "Add a concise executive subtitle.",
+          "textRole": "subtitle"
+        },
+        {
+          "id": "block-a217c01e",
+          "slot": "meta",
+          "frame": {
+            "x": 96,
+            "y": 512,
+            "width": 440,
+            "height": 48
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-05-25T09:46:37.792Z",
+          "updatedAt": "2026-05-25T09:46:37.792Z",
+          "type": "text",
+          "text": "Prepared with qraftPptx",
+          "textRole": "caption"
+        },
+        {
+          "id": "block-0930ee7a",
+          "slot": "visual",
+          "frame": {
+            "x": 888,
+            "y": 0,
+            "width": 392,
+            "height": 720
+          },
+          "style": {
+            "opacity": 0.08
+          },
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-05-25T09:46:37.792Z",
+          "updatedAt": "2026-05-25T09:46:37.792Z",
+          "type": "shape",
+          "shape": "rect"
+        }
+      ],
+      "createdAt": "2026-05-25T09:46:37.792Z",
+      "updatedAt": "2026-05-25T09:46:37.792Z"
+    }
+  ],
+  "assets": [],
+  "metadata": {
+    "productContextSource": "client",
+    "designContextSource": "client",
+    "importedTemplateIds": [
+      "block-frame"
+    ]
+  }
+}

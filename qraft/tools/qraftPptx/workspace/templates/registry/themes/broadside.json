@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "broadside",
+  "name": "Broadside",
+  "sourceTemplateId": "broadside",
+  "colors": {
+    "bg": "#111111",
+    "bg_alt": "#1a1a18",
+    "fg": "#f0ece5",
+    "accent": "#e85d26",
+    "border": "#282826",
+    "muted": "#888880"
+  },
+  "typography": {
+    "display": "Barlow, Noto Sans SC, sans-serif",
+    "body": "Barlow, Noto Sans SC, sans-serif",
+    "mono": "IBM Plex Mono, ui-monospace, monospace"
+  },
+  "spacing": {
+    "slidePadding": 106,
+    "grid": 8,
+    "radius": 0
+  },
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  },
+  "description": "Dark editorial broadside system with massive Barlow type, warm cream copy, and one fire-orange accent.",
+  "fontImports": [
+    "https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+  ]
+}
