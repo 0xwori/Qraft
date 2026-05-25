@@ -6,7 +6,7 @@
       "name": "Tapwise",
       "root": "projects/tapwise",
       "tools": [
-        "qraftPptx"
+        "presentations"
       ],
       "scripts": [
         "atlassian-basic-auth"

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "clients": [
+    {
+      "id": "tapwise",
+      "name": "Tapwise",
+      "root": "../../../projects/tapwise/tools/presentations"
+    }
+  ]
+}

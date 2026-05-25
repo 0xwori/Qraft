@@ -1,3 +1,3 @@
-[mcp_servers.qraftPptx]
-args = ["./qraft/tools/qraftPptx/scripts/start-qraftPptx-mcp.sh"]
+[mcp_servers.presentations]
+args = ["./qraft/tools/presentations/scripts/start-presentations-mcp.sh"]
 command = "bash"

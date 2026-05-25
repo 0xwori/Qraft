@@ -1,6 +1,6 @@
 {
   "name": "qraft",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Codex work-agent plugin and local workfolder system for project context, scripts, tools, and disciplined delivery.",
   "author": {
     "name": "Wouter van Rijmenam"
@@ -27,9 +27,9 @@
     ],
     "defaultPrompt": [
       "Qraft",
-      "Qraft init",
-      "Qraft project list",
-      "Qraft project Tapwise",
+      "Qraft setup",
+      "Qraft projects",
+      "Qraft open Tapwise",
       "Qraft presentations"
     ],
     "brandColor": "#0E7C66",

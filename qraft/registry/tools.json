@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "tools": [
     {
-      "id": "qraftPptx",
-      "name": "qraftPptx",
+      "id": "presentations",
+      "name": "Presentations",
       "kind": "mcp",
-      "command": "bash qraft/tools/qraftPptx/scripts/start-qraftPptx-mcp.sh"
+      "command": "bash qraft/tools/presentations/scripts/start-presentations-mcp.sh"
     }
   ]
 }

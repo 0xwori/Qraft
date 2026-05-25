@@ -73,7 +73,7 @@ registry.projects.push({
   id,
   name,
   root: `projects/${id}`,
-  tools: ["qraftPptx"],
+  tools: ["presentations"],
   scripts: []
 });
 writeFileSync(registryPath, `${JSON.stringify(registry, null, 2)}\n`);

@@ -17,15 +17,15 @@ Qraft is a Codex plugin and workfolder system.
 
 ## Command Routing
 
-- Use `qraft/skills/qraft/SKILL.md` for top-level `Qraft` commands.
-- Use `qraft/skills/qraft-project/SKILL.md` for project selection and project scripts.
-- Use `qraft/skills/qraftPptx/SKILL.md` for presentation work.
+- Use `qraft/skills/qraft/SKILL.md` for top-level `Qraft` commands like `Qraft setup`, `Qraft check`, and `Qraft projects`.
+- Use `qraft/skills/project/SKILL.md` for project selection and project scripts.
+- Use `qraft/skills/presentations/SKILL.md` for presentation work.
 
 ## Shared Tools
 
-- qraftPptx lives in `qraft/tools/qraftPptx/`.
-- The qraftPptx MCP server is started by `qraft/tools/qraftPptx/scripts/start-qraftPptx-mcp.sh`.
-- Project deck data should live in `projects/<project>/tools/qraftPptx/`, not inside the shared app source.
+- Presentations lives in `qraft/tools/presentations/`.
+- The Presentations MCP server is started by `qraft/tools/presentations/scripts/start-presentations-mcp.sh`.
+- Project deck data should live in `projects/<project>/tools/presentations/`, not inside the shared app source.
 
 ## Project Rules
 

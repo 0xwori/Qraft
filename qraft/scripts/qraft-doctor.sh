@@ -40,7 +40,7 @@ check_file ".codex-plugin/plugin.json"
 check_file ".mcp.json"
 check_core_file "registry/projects.json"
 check_core_file "registry/tools.json"
-check_core_file "tools/qraftPptx/app/package-lock.json"
+check_core_file "tools/presentations/app/package-lock.json"
 
 node --input-type=module - "${REPO_ROOT}" "${QRAFT_CORE_ROOT}" <<'NODE' || failures=$((failures + 1))
 import { readFileSync } from "node:fs";
@@ -56,10 +56,10 @@ if (plugin.name !== "qraft") throw new Error("plugin name must be qraft");
 if (plugin.skills !== "./qraft/skills/") throw new Error("plugin skills must point to ./qraft/skills/");
 
 const mcp = readRepoJson(".mcp.json");
-const qraftPptx = mcp.mcpServers?.["qraftPptx"];
-if (!qraftPptx) throw new Error("qraftPptx MCP server must be configured");
-if (!qraftPptx.args?.includes("./qraft/tools/qraftPptx/scripts/start-qraftPptx-mcp.sh")) {
-  throw new Error("qraftPptx MCP server must use the qraft tool script");
+const presentations = mcp.mcpServers?.["presentations"];
+if (!presentations) throw new Error("Presentations MCP server must be configured");
+if (!presentations.args?.includes("./qraft/tools/presentations/scripts/start-presentations-mcp.sh")) {
+  throw new Error("Presentations MCP server must use the qraft tool script");
 }
 
 const projects = readQraftJson("registry/projects.json");
@@ -87,16 +87,16 @@ else
   warn "not inside a git worktree, skipped tracked .env check"
 fi
 
-if [ -d "${QRAFT_CORE_ROOT}/tools/qraftPptx/app/node_modules" ]; then
-  pass "qraftPptx dependencies are installed"
+if [ -d "${QRAFT_CORE_ROOT}/tools/presentations/app/node_modules" ]; then
+  pass "Presentations dependencies are installed"
 else
-  fail "qraftPptx dependencies are missing; run npm run qraftPptx:setup"
+  fail "Presentations dependencies are missing; run npm run presentations:setup"
 fi
 
-if [ -f "${QRAFT_CORE_ROOT}/tools/qraftPptx/app/packages/mcp-server/dist/index.js" ]; then
-  pass "qraftPptx MCP build exists"
+if [ -f "${QRAFT_CORE_ROOT}/tools/presentations/app/packages/mcp-server/dist/index.js" ]; then
+  pass "Presentations MCP build exists"
 else
-  fail "qraftPptx MCP build is missing; run npm run qraftPptx:setup"
+  fail "Presentations MCP build is missing; run npm run presentations:setup"
 fi
 
 if [ "${failures}" -eq 0 ]; then

@@ -1,15 +1,19 @@
 {
   "name": "qraft",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Codex work-agent plugin and local workfolder system.",
   "scripts": {
+    "qraft:setup": "bash qraft/scripts/qraft-init.sh",
+    "qraft:check": "bash qraft/scripts/qraft-doctor.sh",
+    "qraft:projects": "bash qraft/scripts/qraft-project.sh list",
+    "qraft:open": "bash qraft/scripts/qraft-project.sh show",
     "qraft:init": "bash qraft/scripts/qraft-init.sh",
     "qraft:doctor": "bash qraft/scripts/qraft-doctor.sh",
     "qraft:project": "bash qraft/scripts/qraft-project.sh",
-    "qraftPptx:setup": "bash qraft/tools/qraftPptx/scripts/setup.sh",
-    "qraftPptx:mcp": "bash qraft/tools/qraftPptx/scripts/start-mcp.sh",
-    "qraftPptx:ui": "bash qraft/tools/qraftPptx/scripts/start-ui.sh"
+    "presentations:setup": "bash qraft/tools/presentations/scripts/setup.sh",
+    "presentations:mcp": "bash qraft/tools/presentations/scripts/start-mcp.sh",
+    "presentations:ui": "bash qraft/tools/presentations/scripts/start-ui.sh"
   },
   "keywords": [
     "codex",
