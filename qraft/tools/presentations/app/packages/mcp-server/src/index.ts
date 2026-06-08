@@ -8,7 +8,8 @@ import { z } from "zod";
 import { MicroKeynoteCore, type BlockType } from "@micro-keynote/core";
 import { exportDeck } from "@micro-keynote/exporters";
 import { startMicroKeynoteRuntime } from "./runtime.js";
-import { deckSourcePath, insertDeckSlide, listThemeCatalog } from "./deck-source.js";
+import { deckSourcePath, insertDeckSlide, listThemeCatalog, patchDeckSource } from "./deck-source.js";
+import { ingestImage, saveSourceAsset } from "./source-assets.js";
 
 const core = new MicroKeynoteCore();
 await core.initialize();
@@ -226,6 +227,82 @@ register(
     if (!file) throw new Error(`deck.tsx not found for deck "${String(args.deckId)}"`);
     const source = await insertDeckSlide(file, { position: Number(args.position), jsx: String(args.jsx) });
     return { source };
+  },
+);
+register(
+  "add_source_asset",
+  "Save an image into a React source deck's assets from a local file path, a URL, or base64, and return its served URL (use that URL as an image prop value when adding slides). Provide exactly one of filePath, url, or dataBase64.",
+  {
+    clientId: z.string(),
+    deckId: z.string(),
+    filePath: z.string().optional(),
+    url: z.string().optional(),
+    dataBase64: z.string().optional(),
+    fileName: z.string().optional(),
+    intent: z.string().optional(),
+  },
+  false,
+  async (args) => {
+    const clientId = String(args.clientId);
+    const deckId = String(args.deckId);
+    const deckRoot = await core.deckRoot(clientId, deckId);
+    const file = await deckSourcePath(deckRoot);
+    if (!file) throw new Error(`deck.tsx not found for deck "${deckId}"`);
+    const ingested = await ingestImage({
+      filePath: args.filePath as string | undefined,
+      url: args.url as string | undefined,
+      dataBase64: args.dataBase64 as string | undefined,
+      fileName: args.fileName as string | undefined,
+    });
+    const saved = await saveSourceAsset(core, { clientId, deckId, fileName: ingested.fileName, data: ingested.data });
+    return { url: saved.url, fileName: saved.fileName };
+  },
+);
+register(
+  "set_slide_image",
+  "Put an image on a React source-deck slide in one step. Ingests an image from a local file path, a URL, or base64, saves it into the deck's assets, and sets the slide's image prop (default \"image\") to the saved URL — adding the prop if the slide doesn't have one yet. slideIndex is 0-based (slide #3 -> 2). Provide exactly one of filePath, url, or dataBase64.",
+  {
+    clientId: z.string(),
+    deckId: z.string(),
+    slideIndex: z.number().int().min(0),
+    filePath: z.string().optional(),
+    url: z.string().optional(),
+    dataBase64: z.string().optional(),
+    fileName: z.string().optional(),
+    propName: z.string().optional(),
+    altText: z.string().optional(),
+    intent: z.string().optional(),
+  },
+  false,
+  async (args) => {
+    const clientId = String(args.clientId);
+    const deckId = String(args.deckId);
+    const deckRoot = await core.deckRoot(clientId, deckId);
+    const file = await deckSourcePath(deckRoot);
+    if (!file) throw new Error(`deck.tsx not found for deck "${deckId}"`);
+    const ingested = await ingestImage({
+      filePath: args.filePath as string | undefined,
+      url: args.url as string | undefined,
+      dataBase64: args.dataBase64 as string | undefined,
+      fileName: args.fileName as string | undefined,
+    });
+    const saved = await saveSourceAsset(core, { clientId, deckId, fileName: ingested.fileName, data: ingested.data });
+    const slideIndex = Number(args.slideIndex);
+    const propName = (args.propName as string | undefined) ?? "image";
+    let source = (await patchDeckSource(file, { ref: { slideIndex, propName }, value: saved.url, createIfMissing: true })).source;
+    if (args.altText) {
+      // Best-effort: set an existing alt/caption prop if the variant has one.
+      try {
+        source = (await patchDeckSource(file, { ref: { slideIndex, propName: "alt" }, value: String(args.altText) })).source;
+      } catch {
+        try {
+          source = (await patchDeckSource(file, { ref: { slideIndex, propName: "caption" }, value: String(args.altText) })).source;
+        } catch {
+          // variant has no alt/caption prop — leave as-is
+        }
+      }
+    }
+    return { url: saved.url, fileName: saved.fileName, source };
   },
 );
 register("set_theme", "Set a deck theme by themeId.", {

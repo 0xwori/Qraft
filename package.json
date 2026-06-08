@@ -1,8 +1,8 @@
 {
   "name": "qraft",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
-  "description": "Codex work-agent plugin and local workfolder system.",
+  "description": "Codex work-agent plugin and local workfolder system with project context, MCP setup, presentations, and design review.",
   "scripts": {
     "qraft:setup": "bash qraft/scripts/qraft-init.sh",
     "qraft:check": "bash qraft/scripts/qraft-doctor.sh",

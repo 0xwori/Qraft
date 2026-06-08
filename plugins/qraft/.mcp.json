@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "presentations": {
+      "command": "bash",
+      "args": [
+        "/Users/wouter.rijmenam/Documents/Projects/Qraft/qraft/tools/presentations/scripts/start-presentations-mcp.sh"
+      ]
+    },
+    "lms-jira": {
+      "command": "node",
+      "args": [
+        "/Users/wouter.rijmenam/Documents/Projects/Qraft/projects/lms/mcp/jira-mcp-codex/dist/index.js"
+      ]
+    },
+    "lms-phrase": {
+      "command": "node",
+      "args": [
+        "/Users/wouter.rijmenam/Documents/Projects/Qraft/projects/lms/mcp/phrase-mcp-codex/dist/index.js"
+      ]
+    }
+  }
+}

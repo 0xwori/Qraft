@@ -1,9 +1,27 @@
 {
   "mcpServers": {
+    "brandkit": {
+      "command": "bash",
+      "args": [
+        "./qraft/tools/brandkit/scripts/start-brandkit-mcp.sh"
+      ]
+    },
     "presentations": {
       "command": "bash",
       "args": [
         "./qraft/tools/presentations/scripts/start-presentations-mcp.sh"
+      ]
+    },
+    "lms-jira": {
+      "command": "node",
+      "args": [
+        "./projects/lms/mcp/jira-mcp-codex/dist/index.js"
+      ]
+    },
+    "lms-phrase": {
+      "command": "node",
+      "args": [
+        "./projects/lms/mcp/phrase-mcp-codex/dist/index.js"
       ]
     }
   }

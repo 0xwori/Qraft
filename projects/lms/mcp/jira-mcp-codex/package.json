@@ -1,0 +1,34 @@
+{
+  "name": "jira-mcp-codex",
+  "version": "1.0.0",
+  "description": "Stdio MCP server for legacy Jira Server/Data Center and optional Confluence.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "jira-mcp-codex": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "jira",
+    "confluence",
+    "codex"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "dotenv": "^17.4.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.7.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}

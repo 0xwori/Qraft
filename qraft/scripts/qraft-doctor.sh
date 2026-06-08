@@ -38,6 +38,7 @@ check_core_file() {
 
 check_file ".codex-plugin/plugin.json"
 check_file ".mcp.json"
+check_file ".agents/plugins/marketplace.json"
 check_core_file "registry/projects.json"
 check_core_file "registry/tools.json"
 check_core_file "tools/presentations/app/package-lock.json"
@@ -53,7 +54,18 @@ const readQraftJson = (file) => JSON.parse(readFileSync(path.join(qraftRoot, fil
 
 const plugin = readRepoJson(".codex-plugin/plugin.json");
 if (plugin.name !== "qraft") throw new Error("plugin name must be qraft");
-if (plugin.skills !== "./qraft/skills/") throw new Error("plugin skills must point to ./qraft/skills/");
+if (plugin.skills !== "./skills/") throw new Error("plugin skills must point to ./skills/");
+
+const marketplace = readRepoJson(".agents/plugins/marketplace.json");
+const marketplacePlugin = marketplace.plugins?.find((item) => item.name === "qraft");
+if (!marketplacePlugin) throw new Error("marketplace must include qraft plugin");
+if (marketplacePlugin.source?.path !== "./plugins/qraft") {
+  throw new Error("marketplace qraft source must point to ./plugins/qraft");
+}
+
+const wrapperPlugin = readRepoJson("plugins/qraft/.codex-plugin/plugin.json");
+if (wrapperPlugin.name !== "qraft") throw new Error("plugins/qraft plugin wrapper must be named qraft");
+if (wrapperPlugin.skills !== "./skills/") throw new Error("plugins/qraft plugin wrapper skills must point to ./skills/");
 
 const mcp = readRepoJson(".mcp.json");
 const presentations = mcp.mcpServers?.["presentations"];
@@ -76,6 +88,18 @@ if (!Array.isArray(tools.tools)) throw new Error("tool registry tools must be an
 console.log("PASS: plugin and registries parse correctly");
 NODE
 
+if [ -L "${REPO_ROOT}/skills" ] && [ "$(readlink "${REPO_ROOT}/skills")" = "qraft/skills" ]; then
+  pass "skills points to qraft/skills"
+else
+  fail "skills symlink is missing or points to the wrong path"
+fi
+
+if [ -f "${REPO_ROOT}/plugins/qraft/.codex-plugin/plugin.json" ] && [ -d "${REPO_ROOT}/plugins/qraft/skills" ]; then
+  pass "plugins/qraft wrapper exists"
+else
+  fail "plugins/qraft wrapper is missing"
+fi
+
 if git -C "${REPO_ROOT}" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   tracked_env="$(git -C "${REPO_ROOT}" ls-files | grep -E '(^|/)\.env($|\.)' | grep -v '\.env\.example$' || true)"
   if [ -z "${tracked_env}" ]; then
@@ -97,6 +121,39 @@ if [ -f "${QRAFT_CORE_ROOT}/tools/presentations/app/packages/mcp-server/dist/ind
   pass "Presentations MCP build exists"
 else
   fail "Presentations MCP build is missing; run npm run presentations:setup"
+fi
+
+# Claude Desktop integration is optional and per-machine, so this section only warns.
+DESKTOP_CONFIG="${CLAUDE_DESKTOP_CONFIG:-${HOME}/Library/Application Support/Claude/claude_desktop_config.json}"
+if [ -f "${DESKTOP_CONFIG}" ]; then
+  desktop_status="$(
+    node --input-type=module - "${DESKTOP_CONFIG}" <<'NODE' 2>/dev/null || echo "PARSE_ERROR"
+import { existsSync, readFileSync } from "node:fs";
+
+const configPath = process.argv[2];
+const config = JSON.parse(readFileSync(configPath, "utf8"));
+const servers = config.mcpServers ?? {};
+const expected = ["qraft-presentations", "qraft-brandkit"];
+const present = expected.filter((name) => servers[name]);
+if (present.length === 0) {
+  console.log("NOT_CONFIGURED");
+} else {
+  const missingCmd = present.filter((name) => {
+    const cmd = servers[name].command;
+    return cmd && cmd.startsWith("/") && !existsSync(cmd);
+  });
+  console.log(missingCmd.length ? `BAD_COMMAND:${missingCmd.join(",")}` : "OK");
+}
+NODE
+  )"
+  case "${desktop_status}" in
+    OK) pass "Claude Desktop config has qraft servers" ;;
+    NOT_CONFIGURED) warn "Claude Desktop config found but no qraft servers; run: bash qraft/scripts/qraft-claude-desktop.sh" ;;
+    BAD_COMMAND:*) warn "Claude Desktop qraft server command path does not resolve (${desktop_status#BAD_COMMAND:}); re-run: bash qraft/scripts/qraft-claude-desktop.sh" ;;
+    *) warn "Claude Desktop config could not be parsed: ${DESKTOP_CONFIG}" ;;
+  esac
+else
+  warn "Claude Desktop not configured (optional); run: bash qraft/scripts/qraft-claude-desktop.sh"
 fi
 
 if [ "${failures}" -eq 0 ]; then

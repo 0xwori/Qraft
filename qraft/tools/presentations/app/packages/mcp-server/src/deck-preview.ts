@@ -15,7 +15,16 @@ export interface DeckBundle {
  */
 export async function bundleDeckSource(deckTsxPath: string): Promise<DeckBundle> {
   const result = await esbuild.build({
-    entryPoints: [deckTsxPath],
+    stdin: {
+      contents: `import Deck from ${JSON.stringify(deckTsxPath)};
+import { createRoot } from "react-dom/client";
+const mount = document.getElementById("root");
+if (mount) createRoot(mount).render(<Deck />);
+`,
+      resolveDir: path.dirname(deckTsxPath),
+      loader: "tsx",
+      sourcefile: "deck-preview-entry.tsx",
+    },
     bundle: true,
     write: false,
     format: "esm",
@@ -24,7 +33,8 @@ export async function bundleDeckSource(deckTsxPath: string): Promise<DeckBundle>
     jsx: "automatic",
     sourcemap: "inline",
     outdir: "out",
-    external: ["react", "react/jsx-runtime", "react-dom", "react-dom/client"],
+    // Bundle React in so the preview is self-contained — no external CDN at view time.
+    define: { "process.env.NODE_ENV": JSON.stringify("production") },
     loader: { ".tsx": "tsx", ".ts": "ts", ".css": "css" },
     nodePaths: nodeModulesSearchPaths(),
     logLevel: "silent",
@@ -34,8 +44,6 @@ export async function bundleDeckSource(deckTsxPath: string): Promise<DeckBundle>
   if (!js) throw new Error("Deck bundle produced no JS output");
   return { js, css };
 }
-
-const REACT_VERSION = "18.3.1";
 
 export interface PreviewOptions {
   /** Logical deck stage width in px (matches <Deck width=...>). Default 1920. */
@@ -53,16 +61,6 @@ export function previewHtml(clientId: string, deckId: string, opts: PreviewOptio
   const isSingle = slideIndex !== undefined;
   const bundleUrl = `/preview/${encodeURIComponent(clientId)}/${encodeURIComponent(deckId)}/bundle.js`;
   const cssUrl = `/preview/${encodeURIComponent(clientId)}/${encodeURIComponent(deckId)}/bundle.css`;
-  const reactBase = `https://esm.sh/react@${REACT_VERSION}`;
-  const reactDomBase = `https://esm.sh/react-dom@${REACT_VERSION}`;
-  const importmap = JSON.stringify({
-    imports: {
-      react: reactBase,
-      "react/jsx-runtime": `${reactBase}/jsx-runtime`,
-      "react-dom": reactDomBase,
-      "react-dom/client": `${reactDomBase}/client`,
-    },
-  });
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -79,7 +77,6 @@ export function previewHtml(clientId: string, deckId: string, opts: PreviewOptio
     ${isSingle ? "" : "#root .mk-stage { box-shadow: 0 0 0 1px rgba(255,255,255,.06); margin-bottom: 24px; }"}
     #mk-error { color: #f88; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; padding: 16px; max-width: 1000px; white-space: pre-wrap; }
   </style>
-  <script type="importmap">${importmap}</script>
 </head>
 <body>
   <div id="root"></div>
@@ -109,18 +106,12 @@ export function previewHtml(clientId: string, deckId: string, opts: PreviewOptio
     })();
   </script>
   <script type="module">
-    try {
-      const React = await import("react");
-      const ReactDOMClient = await import("react-dom/client");
-      const mod = await import(${JSON.stringify(bundleUrl)} + "?t=" + Date.now());
-      const Deck = mod.default;
-      if (!Deck) throw new Error("deck.tsx must default-export the deck component");
-      ReactDOMClient.createRoot(document.getElementById("root")).render(React.createElement(Deck));
-    } catch (err) {
+    // The bundle is self-contained (React inlined) and self-mounts into #root.
+    import(${JSON.stringify(bundleUrl)} + "?t=" + Date.now()).catch((err) => {
       const el = document.getElementById("mk-error");
       el.hidden = false;
       el.textContent = String(err && err.stack || err);
-    }
+    });
   </script>
 </body>
 </html>`;

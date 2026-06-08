@@ -1,0 +1,156 @@
+{
+  "namespace": "Tap",
+  "themeId": "tap",
+  "variants": [
+    "Cover", "ChapterLight", "ChapterDark", "StatementLight", "StatementDark",
+    "Split", "ImageFull", "ImageLeft", "ImageRight",
+    "DiagramFull", "DiagramLeft", "DiagramRight",
+    "Stats", "List", "Quote", "Compare", "Chart", "End"
+  ],
+  "variantMeta": [
+    {
+      "variant": "Cover",
+      "purpose": "Opening slide with hero image and title",
+      "density": "low",
+      "requiredProps": [],
+      "optionalProps": ["title", "subtitle", "image", "label", "footer"],
+      "jsxTemplate": "<Tap.Cover\n  title=\"Van examenstof naar een slimme oefenroute\"\n  subtitle=\"Tapwise maakt examenstof oefenbaar.\"\n/>"
+    },
+    {
+      "variant": "ChapterLight",
+      "purpose": "Section divider on warm cream surface",
+      "density": "low",
+      "requiredProps": [],
+      "optionalProps": ["chapter", "title", "body", "label", "footer"],
+      "jsxTemplate": "<Tap.ChapterLight\n  chapter=\"01\"\n  title=\"[Sectienaam]\"\n/>"
+    },
+    {
+      "variant": "ChapterDark",
+      "purpose": "Section divider on dark surface",
+      "density": "low",
+      "requiredProps": [],
+      "optionalProps": ["chapter", "title", "body", "label", "footer"],
+      "jsxTemplate": "<Tap.ChapterDark\n  chapter=\"02\"\n  title=\"[Volgend onderwerp]\"\n/>"
+    },
+    {
+      "variant": "StatementLight",
+      "purpose": "Single bold statement on light surface",
+      "density": "low",
+      "requiredProps": [],
+      "optionalProps": ["kicker", "title"],
+      "jsxTemplate": "<Tap.StatementLight\n  title=\"Elke leerling leert anders.\"\n/>"
+    },
+    {
+      "variant": "StatementDark",
+      "purpose": "Single bold statement on dark surface",
+      "density": "low",
+      "requiredProps": [],
+      "optionalProps": ["kicker", "title"],
+      "jsxTemplate": "<Tap.StatementDark\n  title=\"Elke leerling leert anders.\"\n/>"
+    },
+    {
+      "variant": "Split",
+      "purpose": "Text and image split layout",
+      "density": "medium",
+      "requiredProps": [],
+      "optionalProps": ["kicker", "title", "body", "bullets", "image", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.Split\n  kicker=\"Aanpak\"\n  title=\"[Titel]\"\n  body=\"[Omschrijving]\"\n  bullets={[\"Punt een\", \"Punt twee\", \"Punt drie\"]}\n  image=\"https://placehold.co/600x400\"\n/>"
+    },
+    {
+      "variant": "ImageFull",
+      "purpose": "Full-frame image with caption",
+      "density": "medium",
+      "requiredProps": [],
+      "optionalProps": ["title", "body", "image", "alt", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.ImageFull\n  title=\"[Bijschrift]\"\n  image=\"https://placehold.co/600x400\"\n/>"
+    },
+    {
+      "variant": "ImageLeft",
+      "purpose": "Image left, text right",
+      "density": "medium",
+      "requiredProps": [],
+      "optionalProps": ["title", "body", "image", "alt", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.ImageLeft\n  title=\"[Titel]\"\n  body=\"[Tekst]\"\n  image=\"https://placehold.co/600x400\"\n/>"
+    },
+    {
+      "variant": "ImageRight",
+      "purpose": "Text left, image right",
+      "density": "medium",
+      "requiredProps": [],
+      "optionalProps": ["title", "body", "image", "alt", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.ImageRight\n  title=\"[Titel]\"\n  body=\"[Tekst]\"\n  image=\"https://placehold.co/600x400\"\n/>"
+    },
+    {
+      "variant": "DiagramFull",
+      "purpose": "Full-canvas process flow diagram",
+      "density": "high",
+      "requiredProps": [],
+      "optionalProps": ["title", "body", "items", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.DiagramFull\n  title=\"Van signaal naar systeem\"\n  items={[\n    { label: \"01\", title: \"Input\", body: \"Bron of opdracht.\" },\n    { label: \"02\", title: \"Aanpak\", body: \"Regels en beslissingen.\" },\n    { label: \"03\", title: \"Output\", body: \"Zichtbaar resultaat.\" },\n  ]}\n/>"
+    },
+    {
+      "variant": "DiagramLeft",
+      "purpose": "Diagram left, readout right",
+      "density": "medium",
+      "requiredProps": [],
+      "optionalProps": ["title", "body", "items", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.DiagramLeft\n  title=\"[Diagram titel]\"\n  body=\"[Toelichting]\"\n/>"
+    },
+    {
+      "variant": "DiagramRight",
+      "purpose": "Readout left, diagram right",
+      "density": "medium",
+      "requiredProps": [],
+      "optionalProps": ["title", "body", "items", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.DiagramRight\n  title=\"[Diagram titel]\"\n  body=\"[Toelichting]\"\n/>"
+    },
+    {
+      "variant": "Stats",
+      "purpose": "Grid of key metrics",
+      "density": "high",
+      "requiredProps": [],
+      "optionalProps": ["title", "stats", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.Stats\n  title=\"Tapwise in cijfers\"\n  stats={[\n    { value: \"50k+\", label: \"Actieve leerlingen\", note: \"Schooljaar 2024–25\" },\n    { value: \"4.8★\", label: \"App-beoordeling\", note: \"iOS & Android\" },\n  ]}\n/>"
+    },
+    {
+      "variant": "List",
+      "purpose": "Bulleted content list",
+      "density": "high",
+      "requiredProps": [],
+      "optionalProps": ["kicker", "title", "body", "items", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.List\n  kicker=\"Kernpunten\"\n  title=\"[Lijsttitel]\"\n  items={[\"Item één\", \"Item twee\", \"Item drie\"]}\n/>"
+    },
+    {
+      "variant": "Quote",
+      "purpose": "Pull quote with attribution",
+      "density": "low",
+      "requiredProps": [],
+      "optionalProps": ["quote", "attribution", "role", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.Quote\n  quote=\"[Citaattekst]\"\n  attribution=\"[Naam]\"\n  role=\"Havo 5 · [Vak]\"\n/>"
+    },
+    {
+      "variant": "Compare",
+      "purpose": "Two-column before/after comparison",
+      "density": "high",
+      "requiredProps": [],
+      "optionalProps": ["left", "right", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.Compare\n  left={{ label: \"Zonder Tapwise\", title: \"[Links]\", body: \"[Tekst]\", bullets: [] }}\n  right={{ label: \"Met Tapwise\", title: \"[Rechts]\", body: \"[Tekst]\", bullets: [] }}\n/>"
+    },
+    {
+      "variant": "Chart",
+      "purpose": "Bar chart with title and source",
+      "density": "medium",
+      "requiredProps": [],
+      "optionalProps": ["title", "bars", "caption", "source", "label", "page", "footer"],
+      "jsxTemplate": "<Tap.Chart\n  title=\"[Grafiek titel]\"\n  bars={[\n    { label: \"21–22\", value: 40 },\n    { label: \"22–23\", value: 72 },\n  ]}\n/>"
+    },
+    {
+      "variant": "End",
+      "purpose": "Closing slide with contact or CTA",
+      "density": "low",
+      "requiredProps": [],
+      "optionalProps": ["title", "body", "contacts", "label", "footer"],
+      "jsxTemplate": "<Tap.End\n  title=\"Klaar om te starten?\"\n  body=\"Bekijk de examenbundels of maak een gratis account.\"\n  contacts={[{ name: \"[Naam]\", email: \"info@tapwise.app\" }]}\n/>"
+    }
+  ]
+}

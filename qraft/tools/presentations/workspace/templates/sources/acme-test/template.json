@@ -1,0 +1,10 @@
+{
+  "slug": "acme-test",
+  "name": "Acme Test",
+  "tagline": "Editorial navy-and-coral contract-test brand.",
+  "mood": ["editorial", "calm", "trustworthy"],
+  "tone": ["clear", "considered"],
+  "formality": "high",
+  "density": "medium",
+  "scheme": "light"
+}

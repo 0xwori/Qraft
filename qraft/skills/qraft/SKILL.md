@@ -1,6 +1,6 @@
 ---
 name: qraft
-description: Route simple Qraft commands. Use when the user says Qraft, Qraft setup, Qraft check, Qraft projects, Qraft open, Qraft presentations, or Qraft run.
+description: Route simple Qraft commands. Use when the user says Qraft, Qraft setup, Qraft check, Qraft projects, Qraft open, Qraft presentations, Qraft design review, Qraft brandkit, or Qraft run.
 ---
 
 # Qraft
@@ -19,6 +19,9 @@ Slash prefixes are optional. Treat `/Qraft setup` and `Qraft setup` the same.
 | `Qraft projects` | List registered projects. |
 | `Qraft open <project>` | Load project context and show project tools/scripts. |
 | `Qraft presentations` | Route to presentation work. |
+| `Qraft design review` | Route to Impeccable design review and UI improvement workflows. |
+| `Qraft brandkit` | Route to brand asset intake and design.md generation. |
+| `Qraft claude` | Set up Qraft's MCP tools inside the Claude Desktop app. |
 | `Qraft run <project> <script>` | Run a safe project script when its manifest allows it. |
 
 Older aliases still work: `Qraft init`, `Qraft doctor`, `Qraft project list`, and `Qraft project <name>`.
@@ -41,6 +44,9 @@ bash qraft/scripts/qraft-doctor.sh
 
 5. For `projects`, `open`, `project`, and `run`, use `qraft/skills/project/SKILL.md`.
 6. For `presentations`, use `qraft/skills/presentations/SKILL.md`.
+7. For `design review`, `design`, `review`, `ui`, or `impeccable`, use `qraft/skills/impeccable/SKILL.md`.
+8. For `brandkit`, `brand`, or `brand intake`, use `qraft/skills/brandkit/SKILL.md`.
+9. For `claude`, `desktop`, or `claude desktop`, use `qraft/skills/claude/SKILL.md`.
 
 ## Safety
 

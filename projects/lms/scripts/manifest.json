@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "scripts": [
+    {
+      "id": "release-advice",
+      "name": "Create Release Advice Draft",
+      "command": "python3 skills/recurring-mails-outlook/scripts/release_advice.py",
+      "mutatesExternalSystem": false,
+      "requiresConfirmation": true
+    },
+    {
+      "id": "cutoff-dry-run",
+      "name": "Run Cut-Off Dry Run",
+      "command": "python3 skills/mma-cut-off/scripts/cutoff_release.py",
+      "mutatesExternalSystem": false,
+      "requiresConfirmation": true
+    }
+  ]
+}

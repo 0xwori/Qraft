@@ -18,7 +18,13 @@
     "./studio/styles.css": "./src/studio/styles.css",
     "./broadside": "./src/broadside/index.ts",
     "./broadside/fixtures": "./src/broadside/fixtures.tsx",
-    "./broadside/styles.css": "./src/broadside/styles.css"
+    "./broadside/styles.css": "./src/broadside/styles.css",
+    "./monochrome": "./src/monochrome/index.ts",
+    "./monochrome/fixtures": "./src/monochrome/fixtures.tsx",
+    "./monochrome/styles.css": "./src/monochrome/styles.css",
+    "./tap": "./src/tap/index.ts",
+    "./tap/fixtures": "./src/tap/fixtures.tsx",
+    "./tap/styles.css": "./src/tap/styles.css"
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json"

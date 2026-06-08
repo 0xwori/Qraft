@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-06-08T11:15:57.765Z",
+  "colorRoles": [
+    {
+      "role": "bg",
+      "found": true,
+      "source": "image",
+      "confidence": 0.7
+    },
+    {
+      "role": "primary",
+      "found": true,
+      "source": "image",
+      "confidence": 0.7
+    },
+    {
+      "role": "secondary",
+      "found": false,
+      "defaultApplied": "role \"secondary\" not found in extracted colors"
+    },
+    {
+      "role": "accent",
+      "found": false,
+      "defaultApplied": "role \"accent\" not found in extracted colors"
+    },
+    {
+      "role": "text",
+      "found": true,
+      "source": "image",
+      "confidence": 0.7
+    },
+    {
+      "role": "muted",
+      "found": true,
+      "source": "image",
+      "confidence": 0.7
+    },
+    {
+      "role": "light",
+      "found": false,
+      "defaultApplied": "role \"light\" not found in extracted colors"
+    },
+    {
+      "role": "card",
+      "found": false,
+      "defaultApplied": "role \"card\" not found in extracted colors"
+    },
+    {
+      "role": "border",
+      "found": true,
+      "source": "image",
+      "confidence": 0.7
+    },
+    {
+      "role": "positive",
+      "found": false,
+      "defaultApplied": "role \"positive\" not found in extracted colors"
+    },
+    {
+      "role": "negative",
+      "found": false,
+      "defaultApplied": "role \"negative\" not found in extracted colors"
+    }
+  ],
+  "typographyRoles": [
+    {
+      "role": "display",
+      "found": true,
+      "source": "image",
+      "confidence": 0.65
+    },
+    {
+      "role": "body",
+      "found": true,
+      "source": "image",
+      "confidence": 0.65
+    },
+    {
+      "role": "mono",
+      "found": true,
+      "source": "image",
+      "confidence": 0.65
+    }
+  ],
+  "spacingRoles": [
+    {
+      "role": "radius",
+      "found": false
+    },
+    {
+      "role": "pad-x",
+      "found": false
+    },
+    {
+      "role": "pad-y",
+      "found": false
+    }
+  ],
+  "overallConfidence": 0.39
+}

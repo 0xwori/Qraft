@@ -1,0 +1,98 @@
+{
+  "generatedAt": "2026-06-08T09:50:38.765Z",
+  "colorRoles": [
+    {
+      "role": "bg",
+      "found": false,
+      "defaultApplied": "role \"bg\" not found in extracted colors"
+    },
+    {
+      "role": "primary",
+      "found": false,
+      "defaultApplied": "role \"primary\" not found in extracted colors"
+    },
+    {
+      "role": "secondary",
+      "found": false,
+      "defaultApplied": "role \"secondary\" not found in extracted colors"
+    },
+    {
+      "role": "accent",
+      "found": false,
+      "defaultApplied": "role \"accent\" not found in extracted colors"
+    },
+    {
+      "role": "text",
+      "found": false,
+      "defaultApplied": "role \"text\" not found in extracted colors"
+    },
+    {
+      "role": "muted",
+      "found": false,
+      "defaultApplied": "role \"muted\" not found in extracted colors"
+    },
+    {
+      "role": "light",
+      "found": false,
+      "defaultApplied": "role \"light\" not found in extracted colors"
+    },
+    {
+      "role": "card",
+      "found": false,
+      "defaultApplied": "role \"card\" not found in extracted colors"
+    },
+    {
+      "role": "border",
+      "found": false,
+      "defaultApplied": "role \"border\" not found in extracted colors"
+    },
+    {
+      "role": "positive",
+      "found": false,
+      "defaultApplied": "role \"positive\" not found in extracted colors"
+    },
+    {
+      "role": "negative",
+      "found": false,
+      "defaultApplied": "role \"negative\" not found in extracted colors"
+    }
+  ],
+  "typographyRoles": [
+    {
+      "role": "display",
+      "found": true,
+      "source": "manual",
+      "confidence": 0.1,
+      "defaultApplied": "default fallback: Inter, system-ui, sans-serif"
+    },
+    {
+      "role": "body",
+      "found": true,
+      "source": "manual",
+      "confidence": 0.1,
+      "defaultApplied": "default fallback: Inter, system-ui, sans-serif"
+    },
+    {
+      "role": "mono",
+      "found": true,
+      "source": "manual",
+      "confidence": 0.1,
+      "defaultApplied": "default fallback: JetBrains Mono, ui-monospace, monospace"
+    }
+  ],
+  "spacingRoles": [
+    {
+      "role": "radius",
+      "found": false
+    },
+    {
+      "role": "pad-x",
+      "found": false
+    },
+    {
+      "role": "pad-y",
+      "found": false
+    }
+  ],
+  "overallConfidence": 0.02
+}

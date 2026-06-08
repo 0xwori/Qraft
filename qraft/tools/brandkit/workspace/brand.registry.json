@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "brands": [
+    {
+      "id": "lmsmma/tap",
+      "name": "Tap",
+      "root": "/Users/wouter.rijmenam/Documents/Projects/Qraft/projects/lmsmma/tools/brandkit/tap",
+      "projectId": "lmsmma"
+    },
+    {
+      "id": "tapwise/tap",
+      "name": "Tap",
+      "root": "/Users/wouter.rijmenam/Documents/Projects/Qraft/projects/tapwise/tools/brandkit/tap",
+      "projectId": "tapwise"
+    }
+  ]
+}

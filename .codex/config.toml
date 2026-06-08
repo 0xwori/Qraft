@@ -1,3 +1,15 @@
+[mcp_servers.brandkit]
+args = ["./qraft/tools/brandkit/scripts/start-brandkit-mcp.sh"]
+command = "bash"
+
 [mcp_servers.presentations]
 args = ["./qraft/tools/presentations/scripts/start-presentations-mcp.sh"]
 command = "bash"
+
+[mcp_servers.lms-jira]
+args = ["./projects/lms/mcp/jira-mcp-codex/dist/index.js"]
+command = "node"
+
+[mcp_servers.lms-phrase]
+args = ["./projects/lms/mcp/phrase-mcp-codex/dist/index.js"]
+command = "node"

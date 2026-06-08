@@ -1,5 +1,7 @@
 import path from "node:path";
 import { promises as fs } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import {
   Project,
   SyntaxKind,
@@ -137,6 +139,8 @@ export interface PatchSourceInput {
   ref: DeckSourceRef;
   /** New string value to write into the prop. */
   value: string;
+  /** When the prop is absent, add it as a new string attribute instead of throwing. */
+  createIfMissing?: boolean;
 }
 
 export interface PatchSourceResult {
@@ -155,11 +159,20 @@ export async function patchDeckSource(
   const children = jsxChildren(deck);
   const target = children[input.ref.slideIndex];
   if (!target) throw new Error(`Slide index ${input.ref.slideIndex} out of range`);
+  const literal = JSON.stringify(input.value);
   const attr = attributes(target).find((a) => a.getNameNode().getText() === input.ref.propName);
-  if (!attr) throw new Error(`Prop ${input.ref.propName} not found on slide ${input.ref.slideIndex}`);
+  if (!attr) {
+    if (!input.createIfMissing) {
+      throw new Error(`Prop ${input.ref.propName} not found on slide ${input.ref.slideIndex}`);
+    }
+    const open = target.isKind(SyntaxKind.JsxElement) ? target.getOpeningElement() : target;
+    open.addAttribute({ name: input.ref.propName, initializer: literal });
+    await sf.save();
+    const added = await readDeckSource(deckTsxPath);
+    return { ok: true, source: added };
+  }
 
   const init = attr.getInitializer();
-  const literal = JSON.stringify(input.value);
   if (!init) {
     attr.setInitializer(literal);
   } else if (
@@ -289,8 +302,36 @@ export async function insertDeckSlide(
     const next = children[pos]!;
     sf.replaceText([next.getStart(), next.getStart()], `${input.jsx}\n      `);
   }
+  ensureTemplateImport(sf, input.jsx);
   await sf.save();
   return readDeckSource(deckTsxPath);
+}
+
+/**
+ * When an inserted slide uses a template namespace (e.g. `<Monochrome.Cover .../>`)
+ * that the deck.tsx doesn't import yet, add the named import from
+ * `@micro-keynote/templates` plus the theme's stylesheet. Prevents the
+ * "<Namespace> is not defined" runtime crash (which shows as a black preview).
+ */
+function ensureTemplateImport(sf: SourceFile, jsx: string): void {
+  const match = /^\s*<\s*([A-Za-z_$][\w$]*)\s*\./.exec(jsx);
+  if (!match) return;
+  const namespace = match[1];
+  const catalog = findCatalogByNamespace(namespace);
+  if (!catalog) return; // only manage known template namespaces
+  const TEMPLATES = "@micro-keynote/templates";
+  const named = sf.getImportDeclarations().find((d) => d.getModuleSpecifierValue() === TEMPLATES);
+  if (named) {
+    if (!named.getNamedImports().some((n) => n.getName() === namespace)) {
+      named.addNamedImport(namespace);
+    }
+  } else {
+    sf.addImportDeclaration({ moduleSpecifier: TEMPLATES, namedImports: [namespace] });
+  }
+  const stylesSpec = `${TEMPLATES}/${catalog.themeId}/styles.css`;
+  if (!sf.getImportDeclarations().some((d) => d.getModuleSpecifierValue() === stylesSpec)) {
+    sf.addImportDeclaration({ moduleSpecifier: stylesSpec });
+  }
 }
 
 
@@ -1003,10 +1044,196 @@ const THEME_CATALOG: ThemeCatalog[] = [
       },
     ],
   },
+  {
+    namespace: "Monochrome",
+    themeId: "monochrome",
+    variants: [
+      "Cover", "Chapter", "Statement", "Split", "Stats", "List", "Compare", "Quote",
+      "Dense", "Chart", "Diagram", "Pie", "VerticalTimeline", "Cycle", "Pyramid", "End",
+      "ImageFull", "ImageLeft", "ImageRight",
+    ],
+    variantMeta: [
+      {
+        variant: "Cover",
+        purpose: "Ivory cover with bottom-anchored ultra-light display headline and a mono deck label",
+        density: "low",
+        requiredProps: [],
+        optionalProps: ["topLabel", "title", "lead", "metaLeft", "metaRight"],
+        jsxTemplate: `<Monochrome.Cover\n  topLabel="User Research Synthesis / [Month, Year]"\n  title="User Research Synthesis"\n  lead="What we learned from 24 interviews and what it means for the product."\n  metaLeft="Research Team · [Month, Year]"\n  metaRight="Round [N] · Internal"\n/>`,
+      },
+      {
+        variant: "Chapter",
+        purpose: "Section-break slide with a tracked mono number, hairline rule, and large weight-200 headline",
+        density: "low",
+        requiredProps: [],
+        optionalProps: ["number", "title", "body"],
+        jsxTemplate: `<Monochrome.Chapter\n  number="01 · Context"\n  title="Why we went back to users"\n  body="Three months after launch, retention numbers told us something the metrics couldn't."\n/>`,
+      },
+      {
+        variant: "Statement",
+        purpose: "Centered key-finding claim with a mono kicker and hairline rule, chrome header and footer",
+        density: "low",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "kicker", "title"],
+        jsxTemplate: `<Monochrome.Statement\n  label="Key Finding"\n  page="03"\n  kicker="Primary objective · Round [N] synthesis"\n  title="Users don't leave because they lose interest. They leave because they don't know what to do next."\n/>`,
+      },
+      {
+        variant: "Split",
+        purpose: "Two-column slide: editorial text and bullets on the left, image or placeholder on the right",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "kicker", "title", "lead", "bullets", "image", "caption"],
+        jsxTemplate: `<Monochrome.Split\n  label="User Behavior"\n  page="04"\n  kicker="The Pattern"\n  title="The first 48 hours determine everything"\n  lead="Users who complete three core actions in their first two days have a 4× higher 90-day retention rate."\n  bullets={["Onboarding drop-off peaks at step 3", "\\"What do I do next?\\" is the most common exit trigger", "Users who invite a teammate retain at 2× the rate"]}\n  image="https://placehold.co/600x400"\n  caption="Session recording review · [Month of study]"\n/>`,
+      },
+      {
+        variant: "Stats",
+        purpose: "Three large weight-200 statistics on rule-topped cards",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "title", "stats"],
+        jsxTemplate: `<Monochrome.Stats\n  title="What the data showed"\n  stats={[\n    { value: "68%", label: "of users churned within 14 days", note: "[Analytics tool] · [Launch month]" },\n    { value: "3.2min", label: "Average time before abandonment on setup", note: "Session recordings · n=240" },\n    { value: "4×", label: "Higher 90-day retention when fully onboarded", note: "Cohort analysis" },\n  ]}\n/>`,
+      },
+      {
+        variant: "List",
+        purpose: "Left heading block plus a right column of em-dash bullets",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "kicker", "title", "intro", "bullets"],
+        jsxTemplate: `<Monochrome.List\n  kicker="What to fix"\n  title="Five changes, ordered by impact"\n  intro="We recommend addressing these sequentially — later ones depend on the first landing."\n  bullets={["Redesign the setup flow to three steps maximum", "Add a start-here prompt on day one based on user type", "Surface the collaboration invite after first meaningful action", "Replace feature tour with outcome demonstration", "Build a 7-day email sequence that mirrors in-product progress"]}\n/>`,
+      },
+      {
+        variant: "Compare",
+        purpose: "Two panels divided by a center rule: current state left, proposed state right (right label uses ink accent)",
+        density: "high",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "left", "right"],
+        jsxTemplate: `<Monochrome.Compare\n  left={{ label: "Current Onboarding", title: "9-step setup, any order", lead: "Users choose their own path through setup. Most choose wrong.", bullets: ["Average 3.2 minutes to first value", "Step 6 is where 41% abandon", "No adaptive logic based on user type"] }}\n  right={{ label: "Proposed Flow", title: "3-step guided path, adaptive", lead: "User type detected at signup. Path adjusts. First value in under 90 seconds.", bullets: ["Target: 90 seconds to first value", "Eliminate decision paralysis at step entry", "Inline help triggered at abandonment signals"] }}\n/>`,
+      },
+      {
+        variant: "Quote",
+        purpose: "Large Lora serif participant quote with two lines of mono attribution",
+        density: "low",
+        requiredProps: [],
+        optionalProps: ["quote", "attribution", "context"],
+        jsxTemplate: `<Monochrome.Quote\n  quote="I kept opening the app and then closing it again. I didn't know what I was supposed to do."\n  attribution="Participant 14 · 28 years old, Product Designer"\n  context="Interview · [Month of study]"\n/>`,
+      },
+      {
+        variant: "Dense",
+        purpose: "Large headline above a two-column block of running analysis paragraphs",
+        density: "high",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "title", "left", "right"],
+        jsxTemplate: `<Monochrome.Dense\n  title="Why onboarding problems compound over time"\n  left={{ heading: "The Activation Trap", paragraphs: ["Activation is the moment a user experiences core value for the first time.", "Each session that ends without it reinforces the exit pattern.", "Users who activate in session one return at 3× the rate."] }}\n  right={{ heading: "The Network Effect Delay", paragraphs: ["Value increases with each teammate, but users must cross the threshold alone first.", "The median user finds the invite flow only at session four — after 60% have churned.", "Design the single-player experience as a bridge to the collaborative one."] }}\n/>`,
+      },
+      {
+        variant: "Chart",
+        purpose: "Minimal bar chart with a baseline rule; one bar may use the ink accent. Bar heights are pixels (track ≈ 302px)",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "title", "caption", "bars", "source"],
+        jsxTemplate: `<Monochrome.Chart\n  title="90-day retention by onboarding cohort"\n  caption="% retained · n=480 · [Q1 of study period]"\n  bars={[\n    { value: "34%", label: "Cohort 1", height: 108 },\n    { value: "41%", label: "Cohort 2", height: 140 },\n    { value: "48%", label: "Cohort 3", height: 173 },\n    { value: "67%", label: "Proposed", height: 238, accent: true },\n  ]}\n/>`,
+      },
+      {
+        variant: "Diagram",
+        purpose: "Four rule-topped process steps with large weight-200 numbers (whitespace implies flow — no arrows)",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "title", "steps"],
+        jsxTemplate: `<Monochrome.Diagram\n  title="How this research was conducted"\n  steps={[\n    { num: "01", title: "Recruit", desc: "24 participants screened across power, casual, and churned users." },\n    { num: "02", title: "Interview", desc: "60-minute moderated sessions with think-aloud protocol." },\n    { num: "03", title: "Analyse", desc: "Affinity mapping across 340 observations by behaviour type." },\n    { num: "04", title: "Validate", desc: "Findings stress-tested against recordings and ticket data." },\n  ]}\n/>`,
+      },
+      {
+        variant: "Pie",
+        purpose: "Donut chart (segment values should sum to 100) with a mono legend of labels and percentages",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "title", "segments", "total", "source"],
+        jsxTemplate: `<Monochrome.Pie\n  title="Who we spoke with"\n  segments={[\n    { label: "Power Users", value: 38, color: "#1a1a16" },\n    { label: "Casual Users", value: 25, color: "#5e5e54" },\n    { label: "Churned Users", value: 22, color: "#8a8a80" },\n    { label: "Prospects", value: 15, color: "#f0f0d4" },\n  ]}\n  total="Total participants: [N] · [Study period]"\n/>`,
+      },
+      {
+        variant: "VerticalTimeline",
+        purpose: "Date | spine | content rows down a hairline with ink dots; headline above the timeline",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "title", "rows"],
+        jsxTemplate: `<Monochrome.VerticalTimeline\n  title="From research to recommendation"\n  rows={[\n    { date: "[Week 1]", title: "Recruitment", body: "Screened [N]+ applicants, selected [N] participants." },\n    { date: "[Week 2–3]", title: "Fieldwork", body: "[N] moderated sessions, recorded and transcribed." },\n    { date: "[Week 4]", title: "Synthesis", body: "Affinity mapping across [N]+ observations." },\n    { date: "[Week 5]", title: "Validation", body: "Findings stress-tested against analytics and tickets." },\n  ]}\n/>`,
+      },
+      {
+        variant: "Cycle",
+        purpose: "3×3 grid of four steps connected by arrows (→ ↓ ← ↓) — a clockwise process loop. Provide exactly four steps",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "title", "steps"],
+        jsxTemplate: `<Monochrome.Cycle\n  title="The design thinking cycle"\n  steps={[\n    { num: "01", title: "Empathise", desc: "Understand users in their own context. Observe before interpreting." },\n    { num: "02", title: "Define", desc: "Reframe the problem as a testable point of view." },\n    { num: "03", title: "Prototype", desc: "Build to think. The lowest fidelity that answers the question." },\n    { num: "04", title: "Test", desc: "Put prototypes in front of real users. Capture what they do." },\n  ]}\n/>`,
+      },
+      {
+        variant: "Pyramid",
+        purpose: "Centered five-tier pyramid (narrow top to wide base) with graduated ink fills; kicker, title, and lead above",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "kicker", "title", "lead", "levels"],
+        jsxTemplate: `<Monochrome.Pyramid\n  kicker="Research Framework"\n  title="Analysis Hierarchy"\n  lead="From raw observations to strategic insight"\n  levels={["Strategic Insight", "Behavioral Patterns", "Synthesized Themes", "Coded Observations", "Raw Field Notes"]}\n/>`,
+      },
+      {
+        variant: "End",
+        purpose: "Quiet closing slide: mono kicker, hairline rule, weight-200 headline, and contact lead",
+        density: "low",
+        requiredProps: [],
+        optionalProps: ["kicker", "title", "lead"],
+        jsxTemplate: `<Monochrome.End\n  kicker="Research Team"\n  title="Questions, feedback, and next steps"\n  lead="[research@org.com] · [Slack #research] · Full report at [link]"\n/>`,
+      },
+      {
+        variant: "ImageFull",
+        purpose: "Full-bleed image filling the slide body under the chrome, with an optional title and a mono caption",
+        density: "low",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "title", "image", "caption"],
+        jsxTemplate: `<Monochrome.ImageFull\n  label="Exhibit"\n  title="Let the image carry the point"\n  image="https://placehold.co/1600x900"\n  caption="Image caption or source · [Year]"\n/>`,
+      },
+      {
+        variant: "ImageLeft",
+        purpose: "Image on the left, editorial readout (kicker, headline, lead) on the right",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "kicker", "title", "body", "image", "caption"],
+        jsxTemplate: `<Monochrome.ImageLeft\n  kicker="In context"\n  title="Image and argument, side by side"\n  body="Use this when the visual and the editorial point need equal weight."\n  image="https://placehold.co/600x400"\n  caption="Image caption or source · [Year]"\n/>`,
+      },
+      {
+        variant: "ImageRight",
+        purpose: "Editorial readout on the left, image on the right (use when the conclusion introduces the visual)",
+        density: "medium",
+        requiredProps: [],
+        optionalProps: ["label", "page", "footer", "footerRight", "kicker", "title", "body", "image", "caption"],
+        jsxTemplate: `<Monochrome.ImageRight\n  kicker="In context"\n  title="Argument first, then the image"\n  body="Use this when the conclusion should introduce the supporting visual."\n  image="https://placehold.co/600x400"\n  caption="Image caption or source · [Year]"\n/>`,
+      },
+    ],
+  },
 ];
 
+// Dynamic catalog — brandkit_save_jsx writes JSON files here after generating a theme.
+const DYNAMIC_CATALOG_DIR = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../../../../workspace/templates/registry/catalog",
+);
+
+function loadDynamicCatalog(): ThemeCatalog[] {
+  try {
+    return readdirSync(DYNAMIC_CATALOG_DIR)
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => {
+        try {
+          return JSON.parse(readFileSync(path.join(DYNAMIC_CATALOG_DIR, f), "utf8")) as ThemeCatalog;
+        } catch {
+          return null;
+        }
+      })
+      .filter(Boolean) as ThemeCatalog[];
+  } catch {
+    return [];
+  }
+}
+
 export function listThemeCatalog(): ThemeCatalog[] {
-  return THEME_CATALOG;
+  return [...THEME_CATALOG, ...loadDynamicCatalog()];
 }
 
 export interface ChangeThemeInput {
@@ -1019,11 +1246,11 @@ export interface ChangeThemeResult {
 }
 
 function findCatalogByThemeId(themeId: string): ThemeCatalog | undefined {
-  return THEME_CATALOG.find((c) => c.themeId === themeId);
+  return listThemeCatalog().find((c) => c.themeId === themeId);
 }
 
 function findCatalogByNamespace(ns: string): ThemeCatalog | undefined {
-  return THEME_CATALOG.find((c) => c.namespace === ns);
+  return listThemeCatalog().find((c) => c.namespace === ns);
 }
 
 export async function changeDeckTheme(

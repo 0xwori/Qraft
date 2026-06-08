@@ -11,6 +11,20 @@
       "scripts": [
         "atlassian-basic-auth"
       ]
+    },
+    {
+      "id": "lms",
+      "name": "LMS",
+      "root": "projects/lms",
+      "tools": [
+        "presentations",
+        "lms-jira",
+        "lms-phrase"
+      ],
+      "scripts": [
+        "release-advice",
+        "cutoff-dry-run"
+      ]
     }
   ]
 }

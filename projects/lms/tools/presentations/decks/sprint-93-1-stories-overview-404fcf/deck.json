@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "sprint-93-1-stories-overview-404fcf",
+  "clientId": "lms",
+  "title": "Sprint 93.1 — Stories Overview",
+  "themeId": "soft-editorial",
+  "revision": "0001",
+  "createdAt": "2026-06-01T12:41:36.632Z",
+  "updatedAt": "2026-06-01T12:41:36.632Z",
+  "slides": [
+    {
+      "id": "slide-5f8f8598",
+      "layoutId": "cover",
+      "title": "Sprint 93.1 — Stories Overview",
+      "blocks": [
+        {
+          "id": "block-5d8035b0",
+          "slot": "title",
+          "frame": {
+            "x": 96,
+            "y": 152,
+            "width": 760,
+            "height": 128
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-01T12:41:36.632Z",
+          "updatedAt": "2026-06-01T12:41:36.632Z",
+          "type": "text",
+          "text": "Sprint 93.1 — Stories Overview",
+          "textRole": "title"
+        },
+        {
+          "id": "block-39cf684d",
+          "slot": "subtitle",
+          "frame": {
+            "x": 96,
+            "y": 304,
+            "width": 624,
+            "height": 88
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-01T12:41:36.632Z",
+          "updatedAt": "2026-06-01T12:41:36.632Z",
+          "type": "text",
+          "text": "Add a concise executive subtitle.",
+          "textRole": "subtitle"
+        },
+        {
+          "id": "block-023dabca",
+          "slot": "meta",
+          "frame": {
+            "x": 96,
+            "y": 512,
+            "width": 440,
+            "height": 48
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-01T12:41:36.632Z",
+          "updatedAt": "2026-06-01T12:41:36.632Z",
+          "type": "text",
+          "text": "Prepared with Presentations",
+          "textRole": "caption"
+        },
+        {
+          "id": "block-039c71ec",
+          "slot": "visual",
+          "frame": {
+            "x": 888,
+            "y": 0,
+            "width": 392,
+            "height": 720
+          },
+          "style": {
+            "opacity": 0.08
+          },
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-01T12:41:36.632Z",
+          "updatedAt": "2026-06-01T12:41:36.632Z",
+          "type": "shape",
+          "shape": "rect"
+        }
+      ],
+      "createdAt": "2026-06-01T12:41:36.632Z",
+      "updatedAt": "2026-06-01T12:41:36.632Z"
+    }
+  ],
+  "assets": [],
+  "metadata": {
+    "productContextSource": "client",
+    "designContextSource": "client",
+    "importedTemplateIds": [
+      "soft-editorial"
+    ]
+  }
+}

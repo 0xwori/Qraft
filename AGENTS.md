@@ -1,6 +1,9 @@
 # Qraft Workspace
 
-Qraft is a Codex plugin and workfolder system.
+Qraft is a Codex plugin and workfolder system. It is **dual-target**: its tools also run in
+the Claude Desktop app via local MCP servers. Set that up with `Qraft claude` (see
+`qraft/skills/claude/SKILL.md`). The Claude path is additive and does not change the Codex
+packaging.
 
 ## How To Work Here
 
@@ -20,12 +23,17 @@ Qraft is a Codex plugin and workfolder system.
 - Use `qraft/skills/qraft/SKILL.md` for top-level `Qraft` commands like `Qraft setup`, `Qraft check`, and `Qraft projects`.
 - Use `qraft/skills/project/SKILL.md` for project selection and project scripts.
 - Use `qraft/skills/presentations/SKILL.md` for presentation work.
+- Use `qraft/skills/brandkit/SKILL.md` for brand asset intake and design.md generation.
+- Use `qraft/skills/claude/SKILL.md` for setting up Qraft's MCP tools in the Claude Desktop app.
 
 ## Shared Tools
 
 - Presentations lives in `qraft/tools/presentations/`.
 - The Presentations MCP server is started by `qraft/tools/presentations/scripts/start-presentations-mcp.sh`.
 - Project deck data should live in `projects/<project>/tools/presentations/`, not inside the shared app source.
+- Brandkit lives in `qraft/tools/brandkit/`.
+- The Brandkit MCP server is started by `qraft/tools/brandkit/scripts/start-brandkit-mcp.sh`.
+- Per-brand output data lives in `projects/<project>/tools/brandkit/<slug>/`, not inside the shared app source.
 
 ## Project Rules
 

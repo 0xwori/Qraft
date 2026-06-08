@@ -1,6 +1,6 @@
 # Qraft
 
-Qraft is a Codex plugin and workfolder in one.
+Qraft is a Codex plugin and workfolder in one, and its tools also run in the **Claude Desktop app** (see [Use Qraft in Claude Desktop](#use-qraft-in-claude-desktop)).
 
 It gives Codex a clear way to work per project:
 
@@ -57,6 +57,23 @@ Inside Codex, use:
 - `Qraft open Tapwise`
 - `Qraft presentations`
 - `Qraft run Tapwise atlassian-basic-auth`
+
+## Use Qraft in Claude Desktop
+
+Qraft is dual-target. The same tools (Presentations, Brandkit, and project MCP servers
+like LMS Jira/Phrase) can run inside the **Claude Desktop app**. Desktop launches Qraft's
+local MCP servers, so you call the tools directly in Desktop chat.
+
+```bash
+bash qraft/scripts/qraft-claude-desktop.sh    # or: Qraft claude
+```
+
+This reads `.mcp.json` and merges Qraft's servers into the Claude Desktop config
+(`~/Library/Application Support/Claude/claude_desktop_config.json`), using absolute paths so
+they launch reliably on macOS. Your existing servers are kept and the file is backed up first.
+
+Then **quit and reopen Claude Desktop** and check Settings → Developer. Preview without writing
+with `bash qraft/scripts/qraft-claude-desktop.sh --print`. This is additive — Codex keeps working.
 
 ## Project Shape
 

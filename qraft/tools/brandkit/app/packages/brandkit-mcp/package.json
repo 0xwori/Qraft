@@ -1,0 +1,29 @@
+{
+  "name": "@qraft/brandkit-mcp",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "brandkit-mcp": "./dist/index.js",
+    "brandkit": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.0",
+    "@qraft/brandkit-core": "*",
+    "@qraft/brandkit-extractors": "*",
+    "@qraft/brandkit-fuse": "*",
+    "zod": "^3.23.0"
+  }
+}

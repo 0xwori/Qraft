@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "id": "monochrome",
+  "name": "Monochrome",
+  "sourceTemplateId": "monochrome",
+  "colors": {
+    "bg": "#FAFADF",
+    "bg_alt": "#F2F2D2",
+    "paper": "#FAFADF",
+    "paper_warm": "#F5F0E4",
+    "fg": "#1A1A16",
+    "primary": "#1A1A16",
+    "text": "#1A1A16",
+    "ink": "#1A1A16",
+    "accent": "#1A1A16",
+    "muted": "#5E5E54",
+    "muted_light": "#8A8A80",
+    "border": "#1A1A16",
+    "cream-paper": "#FAFADF",
+    "cream-paper-2": "#F2F2D2",
+    "cream-paper-3": "#F0F0D4",
+    "cream-warm": "#F5F0E4",
+    "ink-black": "#1A1A16",
+    "ink-graphite": "#5E5E54",
+    "ink-graphite-light": "#8A8A80"
+  },
+  "typography": {
+    "display": "Jost, Noto Sans SC, system-ui, sans-serif",
+    "body": "Jost, Noto Sans SC, system-ui, sans-serif",
+    "serif": "Lora, Noto Serif SC, Georgia, serif",
+    "mono": "JetBrains Mono, ui-monospace, monospace"
+  },
+  "spacing": {
+    "slidePadding": 120,
+    "grid": 8,
+    "radius": 0
+  },
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  },
+  "description": "Ivory ledger paper with all-black type; ultra-light Jost headlines, Lora italic serif for quotes, JetBrains Mono chrome, and no color at all. A literary, archival editorial system for reports, white papers, and longform decks.",
+  "fontImports": [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com",
+    "https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@200;300;400;500&display=swap"
+  ]
+}

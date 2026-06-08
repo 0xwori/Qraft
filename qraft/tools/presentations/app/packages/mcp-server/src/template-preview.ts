@@ -72,6 +72,33 @@ const TEMPLATE_REGISTRY: Record<string, TemplateRegistryEntry> = {
       "Consult", "End",
     ],
   },
+  "monochrome": {
+    namespace: "Monochrome",
+    importPath: "@micro-keynote/templates/monochrome",
+    fixturesImportPath: "@micro-keynote/templates/monochrome/fixtures",
+    stylesImportPath: "@micro-keynote/templates/monochrome/styles.css",
+    width: 1920,
+    height: 1080,
+    variants: [
+      "Cover", "Chapter", "Statement", "Split", "Stats", "List", "Compare", "Quote",
+      "Dense", "Chart", "Diagram", "Pie", "VerticalTimeline", "Cycle", "Pyramid", "End",
+      "ImageFull", "ImageLeft", "ImageRight",
+    ],
+  },
+  "tap": {
+    namespace: "Tap",
+    importPath: "@micro-keynote/templates/tap",
+    fixturesImportPath: "@micro-keynote/templates/tap/fixtures",
+    stylesImportPath: "@micro-keynote/templates/tap/styles.css",
+    width: 1920,
+    height: 1080,
+    variants: [
+      "Cover", "ChapterLight", "ChapterDark", "StatementLight", "StatementDark",
+      "Split", "ImageFull", "ImageLeft", "ImageRight",
+      "DiagramFull", "DiagramLeft", "DiagramRight",
+      "Stats", "List", "Quote", "Compare", "Chart", "End",
+    ],
+  },
 };
 
 export function getTemplateRegistry(): Record<string, { namespace: string; variants: string[]; width: number; height: number }> {
@@ -89,8 +116,9 @@ export async function bundleTemplateVariant(themeId: string, variant: string): P
   const contents = `import { Deck } from "@micro-keynote/deck-runtime";
 import { FIXTURES } from ${JSON.stringify(entry.fixturesImportPath)};
 import ${JSON.stringify(entry.stylesImportPath)};
+import { createRoot } from "react-dom/client";
 const variant = ${JSON.stringify(variant)};
-export default function Preview() {
+function Preview() {
   const slide = FIXTURES[variant];
   if (!slide) throw new Error("Missing fixture for variant: " + variant);
   return (
@@ -99,6 +127,8 @@ export default function Preview() {
     </Deck>
   );
 }
+const mount = document.getElementById("root");
+if (mount) createRoot(mount).render(<Preview />);
 `;
   const result = await esbuild.build({
     stdin: {
@@ -115,7 +145,8 @@ export default function Preview() {
     jsx: "automatic",
     sourcemap: "inline",
     outdir: "out",
-    external: ["react", "react/jsx-runtime", "react-dom", "react-dom/client"],
+    // Bundle React in so the preview is self-contained — no external CDN at view time.
+    define: { "process.env.NODE_ENV": JSON.stringify("production") },
     loader: { ".tsx": "tsx", ".ts": "ts", ".css": "css" },
     nodePaths: nodeModulesSearchPaths(),
     logLevel: "silent",
@@ -126,23 +157,11 @@ export default function Preview() {
   return { js, css };
 }
 
-const REACT_VERSION = "18.3.1";
-
 export function templatePreviewHtml(themeId: string, variant: string): string {
   const entry = TEMPLATE_REGISTRY[themeId];
   const width = entry?.width ?? 1920;
   const bundleUrl = `/preview/templates/${encodeURIComponent(themeId)}/${encodeURIComponent(variant)}/bundle.js`;
   const cssUrl = `/preview/templates/${encodeURIComponent(themeId)}/${encodeURIComponent(variant)}/bundle.css`;
-  const reactBase = `https://esm.sh/react@${REACT_VERSION}`;
-  const reactDomBase = `https://esm.sh/react-dom@${REACT_VERSION}`;
-  const importmap = JSON.stringify({
-    imports: {
-      react: reactBase,
-      "react/jsx-runtime": `${reactBase}/jsx-runtime`,
-      "react-dom": reactDomBase,
-      "react-dom/client": `${reactDomBase}/client`,
-    },
-  });
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -155,7 +174,6 @@ export function templatePreviewHtml(themeId: string, variant: string): string {
     #root { width: ${width}px; transform-origin: top left; }
     #mk-error { color: #f88; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; padding: 16px; max-width: 1000px; white-space: pre-wrap; }
   </style>
-  <script type="importmap">${importmap}</script>
 </head>
 <body>
   <div id="root"></div>
@@ -176,18 +194,12 @@ export function templatePreviewHtml(themeId: string, variant: string): string {
     })();
   </script>
   <script type="module">
-    try {
-      const React = await import("react");
-      const ReactDOMClient = await import("react-dom/client");
-      const mod = await import(${JSON.stringify(bundleUrl)} + "?t=" + Date.now());
-      const Preview = mod.default;
-      if (!Preview) throw new Error("template bundle must default-export the preview component");
-      ReactDOMClient.createRoot(document.getElementById("root")).render(React.createElement(Preview));
-    } catch (err) {
+    // The bundle is self-contained (React inlined) and self-mounts into #root.
+    import(${JSON.stringify(bundleUrl)} + "?t=" + Date.now()).catch((err) => {
       const el = document.getElementById("mk-error");
       el.hidden = false;
       el.textContent = String(err && err.stack || err);
-    }
+    });
   </script>
 </body>
 </html>`;

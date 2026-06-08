@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "tap-master-template-f93dd0",
+  "clientId": "tapwise",
+  "title": "Tap — Master Template",
+  "themeId": "soft-editorial",
+  "revision": "0001",
+  "createdAt": "2026-06-08T10:04:04.894Z",
+  "updatedAt": "2026-06-08T10:04:04.894Z",
+  "slides": [
+    {
+      "id": "slide-8d8d31fd",
+      "layoutId": "cover",
+      "title": "Tap — Master Template",
+      "blocks": [
+        {
+          "id": "block-ed3655c6",
+          "slot": "title",
+          "frame": {
+            "x": 96,
+            "y": 152,
+            "width": 760,
+            "height": 128
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-08T10:04:04.894Z",
+          "updatedAt": "2026-06-08T10:04:04.894Z",
+          "type": "text",
+          "text": "Tap — Master Template",
+          "textRole": "title"
+        },
+        {
+          "id": "block-870d6443",
+          "slot": "subtitle",
+          "frame": {
+            "x": 96,
+            "y": 304,
+            "width": 624,
+            "height": 88
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-08T10:04:04.896Z",
+          "updatedAt": "2026-06-08T10:04:04.896Z",
+          "type": "text",
+          "text": "Add a concise executive subtitle.",
+          "textRole": "subtitle"
+        },
+        {
+          "id": "block-d712147f",
+          "slot": "meta",
+          "frame": {
+            "x": 96,
+            "y": 512,
+            "width": 440,
+            "height": 48
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-08T10:04:04.896Z",
+          "updatedAt": "2026-06-08T10:04:04.896Z",
+          "type": "text",
+          "text": "Prepared with Presentations",
+          "textRole": "caption"
+        },
+        {
+          "id": "block-aa3560f9",
+          "slot": "visual",
+          "frame": {
+            "x": 888,
+            "y": 0,
+            "width": 392,
+            "height": 720
+          },
+          "style": {
+            "opacity": 0.08
+          },
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-08T10:04:04.896Z",
+          "updatedAt": "2026-06-08T10:04:04.896Z",
+          "type": "shape",
+          "shape": "rect"
+        }
+      ],
+      "createdAt": "2026-06-08T10:04:04.894Z",
+      "updatedAt": "2026-06-08T10:04:04.894Z"
+    }
+  ],
+  "assets": [],
+  "metadata": {
+    "productContextSource": "client",
+    "designContextSource": "client",
+    "importedTemplateIds": [
+      "soft-editorial"
+    ]
+  }
+}

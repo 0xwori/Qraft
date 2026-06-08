@@ -1,0 +1,24 @@
+{
+  "name": "@qraft/brandkit-fuse",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch"
+  },
+  "dependencies": {
+    "@qraft/brandkit-core": "*",
+    "culori": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/culori": "*"
+  }
+}

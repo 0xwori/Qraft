@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "clientId": "lms",
+  "generatedAt": "2026-06-01T12:41:36.659Z",
+  "decks": [
+    {
+      "id": "sprint-93-1-stories-overview-404fcf",
+      "title": "Sprint 93.1 — Stories Overview",
+      "themeId": "soft-editorial",
+      "slideCount": 1,
+      "revision": "0001",
+      "updatedAt": "2026-06-01T12:41:36.632Z",
+      "path": "decks/sprint-93-1-stories-overview-404fcf/deck.tsx"
+    },
+    {
+      "id": "ethereum-studio-compute-layer-7c2f91",
+      "title": "Ethereum: The Programmable Settlement Layer",
+      "themeId": "studio",
+      "slideCount": 3,
+      "revision": "0001",
+      "updatedAt": "2026-05-22T14:12:00.000Z",
+      "path": "decks/ethereum-studio-compute-layer-7c2f91/deck.tsx"
+    },
+    {
+      "id": "bitcoin-blockframe-digital-scarcity-2a74c9",
+      "title": "Bitcoin: Digital Scarcity in BlockFrame",
+      "themeId": "block-frame",
+      "slideCount": 5,
+      "revision": "0001",
+      "updatedAt": "2026-05-22T12:15:08.000Z",
+      "path": "decks/bitcoin-blockframe-digital-scarcity-2a74c9/deck.tsx"
+    },
+    {
+      "id": "bitcoin-the-digital-scarcity-network-5f3a91",
+      "title": "Bitcoin: The Digital Scarcity Network",
+      "themeId": "soft-editorial",
+      "slideCount": 5,
+      "revision": "0002",
+      "updatedAt": "2026-05-22T11:33:08.000Z",
+      "path": "decks/bitcoin-the-digital-scarcity-network-5f3a91/deck.tsx"
+    },
+    {
+      "id": "coffee-from-bean-to-daily-ritual-bc81cb",
+      "title": "Coffee, From Bean to Daily Ritual",
+      "themeId": "soft-editorial",
+      "slideCount": 5,
+      "revision": "0003",
+      "updatedAt": "2026-05-21T20:04:30.247Z",
+      "path": "decks/coffee-from-bean-to-daily-ritual-bc81cb/deck.tsx"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "brandkit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @qraft/brandkit-core && npm run build -w @qraft/brandkit-extractors && npm run build -w @qraft/brandkit-fuse && npm run build -w @qraft/brandkit-mcp",
+    "start:mcp": "npm run start -w @qraft/brandkit-mcp",
+    "test": "vitest run --exclude '**/dist/**'",
+    "typecheck": "tsc --noEmit -p packages/brandkit-core/tsconfig.json && tsc --noEmit -p packages/brandkit-extractors/tsconfig.json && tsc --noEmit -p packages/brandkit-fuse/tsconfig.json && tsc --noEmit -p packages/brandkit-mcp/tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^2.0.0"
+  }
+}

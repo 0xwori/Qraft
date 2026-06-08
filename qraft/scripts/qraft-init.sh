@@ -42,6 +42,9 @@ ensure_dir "${QRAFT_CORE_ROOT}/registry"
 ensure_dir "${QRAFT_CORE_ROOT}/scripts"
 ensure_dir "${QRAFT_CORE_ROOT}/skills"
 ensure_dir "${QRAFT_CORE_ROOT}/tools"
+ensure_dir "${REPO_ROOT}/.agents/plugins"
+ensure_dir "${REPO_ROOT}/plugins/qraft/.codex-plugin"
+ensure_dir "${REPO_ROOT}/plugins/qraft/skills"
 ensure_dir "${REPO_ROOT}/projects"
 ensure_dir "${QRAFT_CORE_ROOT}/templates/project"
 ensure_dir "${QRAFT_CORE_ROOT}/tools/presentations/app"
@@ -82,6 +85,92 @@ ensure_json_file "${QRAFT_CORE_ROOT}/tools/presentations/workspace/client.regist
   "schemaVersion": 1,
   "clients": []
 }'
+
+if [ -L "${REPO_ROOT}/skills" ] && [ "$(readlink "${REPO_ROOT}/skills")" != "qraft/skills" ]; then
+  rm "${REPO_ROOT}/skills"
+  ln -s qraft/skills "${REPO_ROOT}/skills"
+  created=$((created + 1))
+  printf 'repaired symlink: %s\n' "${REPO_ROOT}/skills"
+elif [ -L "${REPO_ROOT}/skills" ]; then
+  kept=$((kept + 1))
+  printf 'kept symlink: %s\n' "${REPO_ROOT}/skills"
+elif [ -e "${REPO_ROOT}/skills" ]; then
+  kept=$((kept + 1))
+  printf 'kept path: %s\n' "${REPO_ROOT}/skills"
+else
+  ln -s qraft/skills "${REPO_ROOT}/skills"
+  created=$((created + 1))
+  printf 'created symlink: %s\n' "${REPO_ROOT}/skills"
+fi
+
+cp "${REPO_ROOT}/.codex-plugin/plugin.json" "${REPO_ROOT}/plugins/qraft/.codex-plugin/plugin.json"
+rsync -a --delete "${QRAFT_CORE_ROOT}/skills/" "${REPO_ROOT}/plugins/qraft/skills/"
+cp "${REPO_ROOT}/.pluginignore" "${REPO_ROOT}/plugins/qraft/.pluginignore" 2>/dev/null || true
+cp "${REPO_ROOT}/.codexignore" "${REPO_ROOT}/plugins/qraft/.codexignore" 2>/dev/null || true
+cat > "${REPO_ROOT}/plugins/qraft/.mcp.json" <<EOF
+{
+  "mcpServers": {
+    "presentations": {
+      "command": "bash",
+      "args": [
+        "${REPO_ROOT}/qraft/tools/presentations/scripts/start-presentations-mcp.sh"
+      ]
+    },
+    "lms-jira": {
+      "command": "node",
+      "args": [
+        "${REPO_ROOT}/projects/lms/mcp/jira-mcp-codex/dist/index.js"
+      ]
+    },
+    "lms-phrase": {
+      "command": "node",
+      "args": [
+        "${REPO_ROOT}/projects/lms/mcp/phrase-mcp-codex/dist/index.js"
+      ]
+    }
+  }
+}
+EOF
+kept=$((kept + 1))
+printf 'synced plugin wrapper: %s\n' "${REPO_ROOT}/plugins/qraft"
+
+node --input-type=module - "${REPO_ROOT}" <<'NODE'
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import path from "node:path";
+
+const root = process.argv[2];
+const marketplacePath = path.join(root, ".agents/plugins/marketplace.json");
+const marketplace = existsSync(marketplacePath)
+  ? JSON.parse(readFileSync(marketplacePath, "utf8"))
+  : { name: "qraft", interface: { displayName: "Qraft" }, plugins: [] };
+
+marketplace.name = marketplace.name || "qraft";
+marketplace.interface ??= { displayName: "Qraft" };
+marketplace.interface.displayName ??= "Qraft";
+marketplace.plugins ??= [];
+
+const entry = {
+  name: "qraft",
+  source: {
+    source: "local",
+    path: "./plugins/qraft",
+  },
+  policy: {
+    installation: "AVAILABLE",
+    authentication: "ON_INSTALL",
+  },
+  category: "Productivity",
+};
+
+const index = marketplace.plugins.findIndex((plugin) => plugin.name === "qraft");
+if (index >= 0) {
+  marketplace.plugins[index] = { ...marketplace.plugins[index], ...entry };
+} else {
+  marketplace.plugins.push(entry);
+}
+
+writeFileSync(marketplacePath, `${JSON.stringify(marketplace, null, 2)}\n`);
+NODE
 
 ensure_project_presentations() {
   local project_id="$1"

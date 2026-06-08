@@ -1,3 +1,4 @@
+# Local dependency and build output folders make plugin installation slow.
 node_modules/
 **/node_modules/
 dist/
@@ -5,9 +6,25 @@ dist/
 .vite/
 **/.vite/
 *.tsbuildinfo
-coverage/
+
+# Git and local app state are not plugin source.
+.git/
+.codex/
+
+# Runtime outputs and generated artifacts stay in the workspace.
+outputs/
+**/outputs/
+exports/
+**/exports/
+**/.export/
+ai-log/
+**/ai-log/
+
+# Secrets must never be packaged.
+.env
 **/.env
 **/.env.*
 !**/.env.example
-projects/*/outputs/
-projects/*/tools/*/exports/
+
+# OS noise.
+.DS_Store

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "nl-alert-burgernet-ui-changes-68cb0c",
+  "clientId": "tapwise",
+  "title": "NL-Alert & Burgernet — UI Changes",
+  "themeId": "soft-editorial",
+  "revision": "0001",
+  "createdAt": "2026-06-01T14:51:46.987Z",
+  "updatedAt": "2026-06-01T14:51:46.987Z",
+  "slides": [
+    {
+      "id": "slide-1a1b6eef",
+      "layoutId": "cover",
+      "title": "NL-Alert & Burgernet — UI Changes",
+      "blocks": [
+        {
+          "id": "block-867340cd",
+          "slot": "title",
+          "frame": {
+            "x": 96,
+            "y": 152,
+            "width": 760,
+            "height": 128
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-01T14:51:46.988Z",
+          "updatedAt": "2026-06-01T14:51:46.988Z",
+          "type": "text",
+          "text": "NL-Alert & Burgernet — UI Changes",
+          "textRole": "title"
+        },
+        {
+          "id": "block-87a52e67",
+          "slot": "subtitle",
+          "frame": {
+            "x": 96,
+            "y": 304,
+            "width": 624,
+            "height": 88
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-01T14:51:46.988Z",
+          "updatedAt": "2026-06-01T14:51:46.988Z",
+          "type": "text",
+          "text": "Add a concise executive subtitle.",
+          "textRole": "subtitle"
+        },
+        {
+          "id": "block-bb4ef829",
+          "slot": "meta",
+          "frame": {
+            "x": 96,
+            "y": 512,
+            "width": 440,
+            "height": 48
+          },
+          "style": {},
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-01T14:51:46.988Z",
+          "updatedAt": "2026-06-01T14:51:46.988Z",
+          "type": "text",
+          "text": "Prepared with Presentations",
+          "textRole": "caption"
+        },
+        {
+          "id": "block-11438974",
+          "slot": "visual",
+          "frame": {
+            "x": 888,
+            "y": 0,
+            "width": 392,
+            "height": 720
+          },
+          "style": {
+            "opacity": 0.08
+          },
+          "exportCompatibility": {
+            "html": "native",
+            "pdf": "native",
+            "pptx": "native"
+          },
+          "createdAt": "2026-06-01T14:51:46.988Z",
+          "updatedAt": "2026-06-01T14:51:46.988Z",
+          "type": "shape",
+          "shape": "rect"
+        }
+      ],
+      "createdAt": "2026-06-01T14:51:46.988Z",
+      "updatedAt": "2026-06-01T14:51:46.988Z"
+    }
+  ],
+  "assets": [],
+  "metadata": {
+    "productContextSource": "client",
+    "designContextSource": "client",
+    "importedTemplateIds": [
+      "soft-editorial"
+    ]
+  }
+}

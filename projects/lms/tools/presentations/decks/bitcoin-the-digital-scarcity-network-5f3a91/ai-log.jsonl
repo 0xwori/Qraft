@@ -1,0 +1,2 @@
+{"ts":"2026-05-22T08:14:34.000Z","actor":"codex","action":"create_deck","intent":"Create a five-slide Bitcoin deck with Presentations","revisionFrom":"0000","revisionTo":"0001","deckId":"bitcoin-the-digital-scarcity-network-5f3a91"}
+{"ts":"2026-05-22T11:33:08.000Z","actor":"codex","action":"fix_alignment","intent":"Fix clipped right-side text and improve title wrapping","revisionFrom":"0001","revisionTo":"0002","deckId":"bitcoin-the-digital-scarcity-network-5f3a91"}

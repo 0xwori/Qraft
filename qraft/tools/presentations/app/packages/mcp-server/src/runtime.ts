@@ -22,6 +22,7 @@ import {
 import { bundleDeckSource, previewHtml } from "./deck-preview.js";
 import { bundleTemplateVariant, templatePreviewHtml } from "./template-preview.js";
 import { closeExportBrowser, exportDeckSource } from "./deck-export.js";
+import { saveSourceAsset } from "./source-assets.js";
 
 export interface RuntimeOptions {
   core?: MicroKeynoteCore;
@@ -399,21 +400,13 @@ async function startRuntime(options: RuntimeOptions): Promise<RuntimeHandle> {
     const fileName = String(req.body.fileName ?? "");
     const dataBase64 = String(req.body.dataBase64 ?? "");
     if (!fileName || !dataBase64) throw new Error("fileName and dataBase64 are required");
-    if (fileName.includes("/") || fileName.includes("..") || fileName.startsWith(".")) {
-      throw new Error("Invalid fileName");
-    }
-    const deckRoot = await core.deckRoot(clientId, deckId);
-    const assetsDir = path.join(deckRoot, "assets");
-    await fs.mkdir(assetsDir, { recursive: true });
-    const ext = path.extname(fileName) || "";
-    const stem = path.basename(fileName, ext).replace(/[^a-zA-Z0-9_-]/g, "_") || "asset";
-    const stamp = Date.now().toString(36);
-    const finalName = `${stem}-${stamp}${ext}`;
-    const filePath = path.join(assetsDir, finalName);
-    const buf = Buffer.from(dataBase64, "base64");
-    await fs.writeFile(filePath, buf);
-    const url = `/deck-assets/${encodeURIComponent(clientId)}/${encodeURIComponent(deckId)}/assets/${encodeURIComponent(finalName)}`;
-    res.json({ schemaVersion: 1, fileName: finalName, url });
+    const saved = await saveSourceAsset(core, {
+      clientId,
+      deckId,
+      fileName,
+      data: Buffer.from(dataBase64, "base64"),
+    });
+    res.json({ schemaVersion: 1, fileName: saved.fileName, url: saved.url });
   }));
 
   app.get("/preview/:clientId/:deckId/bundle.js", asyncHandler(async (req, res) => {

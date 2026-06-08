@@ -1,0 +1,141 @@
+{
+  "source": "image",
+  "extractedAt": "2026-06-08T11:15:53.891Z",
+  "colors": {
+    "primary": {
+      "$type": "color",
+      "$value": "#F26B1D",
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.7
+        }
+      }
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "#F9F6F1",
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.7
+        }
+      }
+    },
+    "surface": {
+      "$type": "color",
+      "$value": "#FFFFFF",
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.7
+        }
+      }
+    },
+    "surface-alt": {
+      "$type": "color",
+      "$value": "#EEF7EE",
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.7
+        }
+      }
+    },
+    "border": {
+      "$type": "color",
+      "$value": "#E5E0D8",
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.7
+        }
+      }
+    },
+    "text": {
+      "$type": "color",
+      "$value": "#1A1A1A",
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.7
+        }
+      }
+    },
+    "text-muted": {
+      "$type": "color",
+      "$value": "#6B6B6B",
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.7
+        }
+      }
+    },
+    "tag-bg": {
+      "$type": "color",
+      "$value": "#FFF3EB",
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.7
+        }
+      }
+    },
+    "tag-text": {
+      "$type": "color",
+      "$value": "#F26B1D",
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.7
+        }
+      }
+    }
+  },
+  "typography": {
+    "display": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Inter, sans-serif",
+        "fontWeight": 700,
+        "fontSize": "2.5rem"
+      },
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.65
+        }
+      }
+    },
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Inter, sans-serif",
+        "fontWeight": 400,
+        "fontSize": "1rem"
+      },
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.65
+        }
+      }
+    },
+    "mono": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "monospace",
+        "fontWeight": 400
+      },
+      "$extensions": {
+        "brandkit": {
+          "source": "image",
+          "confidence": 0.65
+        }
+      }
+    }
+  },
+  "spacing": {},
+  "assets": []
+}

@@ -1,0 +1,49 @@
+{
+  "fusedAt": "2026-06-08T09:50:38.765Z",
+  "sourcePriority": [
+    "website"
+  ],
+  "colors": {},
+  "typography": {
+    "display": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Inter, system-ui, sans-serif"
+      },
+      "$description": "Default fallback for missing display role",
+      "$extensions": {
+        "brandkit": {
+          "source": "manual",
+          "confidence": 0.1
+        }
+      }
+    },
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Inter, system-ui, sans-serif"
+      },
+      "$description": "Default fallback for missing body role",
+      "$extensions": {
+        "brandkit": {
+          "source": "manual",
+          "confidence": 0.1
+        }
+      }
+    },
+    "mono": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "JetBrains Mono, ui-monospace, monospace"
+      },
+      "$description": "Default fallback for missing mono role",
+      "$extensions": {
+        "brandkit": {
+          "source": "manual",
+          "confidence": 0.1
+        }
+      }
+    }
+  },
+  "spacing": {}
+}

@@ -1,0 +1,884 @@
+/*
+ * Monochrome (Ivory Ledger) — ported from beautiful-html-templates/monochrome.
+ * Black ink on cream paper; ultra-light Jost headlines, Lora serif for quotes,
+ * JetBrains Mono chrome. No chromatic accents — "accent" is just darker ink.
+ *
+ * Scoped under .mk-theme-monochrome and rendered on a fixed 1920x1080 stage,
+ * so the source's vw/vh type scale is baked to px (1vw=19.2px, 1vh=10.8px).
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Serif+SC:wght@300;400;500&family=Noto+Sans+SC:wght@200;300;400;500&display=swap");
+
+.mk-theme-monochrome {
+  --mono-bg: #fafadf;
+  --mono-bg-alt: #f2f2d2;
+  --mono-bg-light: #fafadf;
+  --mono-bg-light-alt: #f0f0d4;
+  --mono-cream: #f5f0e4;
+  --mono-fg: #1a1a16;
+  --mono-fg-2: #5e5e54;
+  --mono-fg-3: #8a8a80;
+  --mono-accent: #1a1a16;
+  --mono-border: #1a1a16;
+
+  --mono-f-display: "Jost", "Noto Sans SC", system-ui, sans-serif;
+  --mono-f-serif: "Lora", "Noto Serif SC", Georgia, serif;
+  --mono-f-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  color: var(--mono-fg);
+  font-family: var(--mono-f-display);
+}
+
+.mk-theme-monochrome .mk-stage {
+  background: var(--mono-bg);
+}
+
+.mk-theme-monochrome .mono-slide,
+.mk-theme-monochrome .mono-slide * {
+  box-sizing: border-box;
+}
+
+.mk-theme-monochrome h1,
+.mk-theme-monochrome h2,
+.mk-theme-monochrome h3,
+.mk-theme-monochrome h4,
+.mk-theme-monochrome p,
+.mk-theme-monochrome ul,
+.mk-theme-monochrome figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Slide base ──────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 65px 154px 65px 221px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  -webkit-font-smoothing: antialiased;
+}
+.mk-theme-monochrome .mono-body {
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-light {
+  background: var(--mono-bg-light);
+  color: var(--mono-fg);
+}
+.mk-theme-monochrome .mono-dark {
+  background: var(--mono-bg);
+  color: var(--mono-fg);
+}
+.mk-theme-monochrome .mono-cream {
+  background: var(--mono-cream);
+  color: var(--mono-fg);
+}
+
+/* ── Typography ──────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-display {
+  font-family: var(--mono-f-display);
+  font-size: 163px;
+  font-weight: 200;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+}
+.mk-theme-monochrome .mono-h1 {
+  font-family: var(--mono-f-display);
+  font-size: 96px;
+  font-weight: 200;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.mk-theme-monochrome .mono-h2 {
+  font-family: var(--mono-f-display);
+  font-size: 61px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+.mk-theme-monochrome .mono-h3 {
+  font-family: var(--mono-f-display);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+.mk-theme-monochrome .mono-lead {
+  font-family: var(--mono-f-display);
+  font-size: 29px;
+  font-weight: 300;
+  line-height: 1.65;
+}
+.mk-theme-monochrome .mono-copy {
+  font-family: var(--mono-f-display);
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.mk-theme-monochrome .mono-caption {
+  font-family: var(--mono-f-display);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.55;
+}
+.mk-theme-monochrome .mono-label {
+  font-family: var(--mono-f-mono);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.mk-theme-monochrome .mono-muted {
+  color: var(--mono-fg-2);
+}
+.mk-theme-monochrome .mono-accent {
+  color: var(--mono-accent);
+}
+
+/* ── Chrome header / footer ──────────────────────────────────────────── */
+.mk-theme-monochrome .mono-chrome,
+.mk-theme-monochrome .mono-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mk-theme-monochrome .mono-chrome {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--mono-border);
+  margin-bottom: 32px;
+}
+.mk-theme-monochrome .mono-foot {
+  padding-top: 16px;
+  border-top: 1px solid var(--mono-border);
+  margin-top: 32px;
+}
+
+/* ── Shared components ───────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-rule {
+  width: 36px;
+  height: 1px;
+  background: var(--mono-border);
+}
+.mk-theme-monochrome .mono-rule-full {
+  width: 100%;
+}
+.mk-theme-monochrome .mono-kicker {
+  font-family: var(--mono-f-mono);
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mono-fg-3);
+}
+.mk-theme-monochrome .mono-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.mk-theme-monochrome .mono-bullets li {
+  display: grid;
+  grid-template-columns: 1.2em 1fr;
+  gap: 0.5em;
+  font-family: var(--mono-f-display);
+  font-size: 29px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--mono-fg);
+}
+.mk-theme-monochrome .mono-bullets li::before {
+  content: "—";
+  color: var(--mono-fg-3);
+  font-family: var(--mono-f-mono);
+}
+.mk-theme-monochrome .mono-bullets-sm li {
+  font-size: 21px;
+}
+.mk-theme-monochrome .mono-img-caption {
+  font-family: var(--mono-f-mono);
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  opacity: 0.45;
+  margin-top: 9px;
+}
+
+/* ── 1. Cover ────────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.mk-theme-monochrome .mono-cover-toplabel {
+  position: absolute;
+  top: 65px;
+  right: 154px;
+  text-align: right;
+}
+.mk-theme-monochrome .mono-cover-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-end;
+  gap: 32px;
+}
+.mk-theme-monochrome .mono-cover-lead {
+  max-width: 55%;
+}
+.mk-theme-monochrome .mono-cover-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 54px;
+  padding-top: 16px;
+  border-top: 1px solid var(--mono-border);
+}
+
+/* ── 2. Chapter ──────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-chapter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mk-theme-monochrome .mono-chapter-num {
+  font-family: var(--mono-f-mono);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mono-accent);
+  margin-bottom: 32px;
+}
+.mk-theme-monochrome .mono-chapter-rule {
+  width: 36px;
+  height: 1px;
+  background: var(--mono-accent);
+  margin-bottom: 32px;
+}
+.mk-theme-monochrome .mono-chapter-lead {
+  max-width: 50%;
+  margin-top: 32px;
+  color: var(--mono-fg-3);
+}
+
+/* ── 3. Statement ────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-statement-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+.mk-theme-monochrome .mono-statement-title {
+  max-width: 65%;
+}
+
+/* ── 4. Split ────────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-split-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 108px;
+  align-items: center;
+}
+.mk-theme-monochrome .mono-split-text {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.mk-theme-monochrome .mono-split-image {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mk-theme-monochrome .mono-img-ph,
+.mk-theme-monochrome .mono-split-image img {
+  width: 100%;
+  height: 594px;
+}
+.mk-theme-monochrome .mono-split-image img {
+  object-fit: cover;
+  display: block;
+}
+.mk-theme-monochrome .mono-img-ph {
+  border: 1px solid var(--mono-border);
+  background: var(--mono-bg-light-alt);
+  color: var(--mono-fg-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono-f-mono);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ── 5. Stats ────────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-stats-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 54px;
+}
+.mk-theme-monochrome .mono-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.mk-theme-monochrome .mono-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 32px 32px 0;
+  border-top: 1px solid var(--mono-border);
+}
+.mk-theme-monochrome .mono-stat-value {
+  font-family: var(--mono-f-display);
+  font-size: 106px;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--mono-fg);
+}
+.mk-theme-monochrome .mono-stat-label {
+  font-family: var(--mono-f-display);
+  font-size: 21px;
+  line-height: 1.5;
+  font-weight: 300;
+  color: var(--mono-fg);
+}
+.mk-theme-monochrome .mono-stat-note {
+  font-family: var(--mono-f-mono);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  color: var(--mono-fg-3);
+}
+
+/* ── 6. List ─────────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-list-body {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 123px;
+  align-items: center;
+}
+.mk-theme-monochrome .mono-list-head {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 16px;
+}
+
+/* ── 7. Compare ──────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-compare-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+.mk-theme-monochrome .mono-compare-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 0;
+}
+.mk-theme-monochrome .mono-compare-panel.mono-left {
+  padding-right: 85px;
+  border-right: 1px solid var(--mono-border);
+}
+.mk-theme-monochrome .mono-compare-panel.mono-right {
+  padding-left: 85px;
+}
+.mk-theme-monochrome .mono-compare-label {
+  font-family: var(--mono-f-mono);
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--mono-border);
+  color: var(--mono-fg-3);
+}
+.mk-theme-monochrome .mono-compare-label.mono-after {
+  color: var(--mono-accent);
+  border-color: var(--mono-accent);
+}
+
+/* ── 8. Quote ────────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 85px 185px 85px 244px;
+}
+.mk-theme-monochrome .mono-quote-text {
+  font-family: var(--mono-f-serif);
+  font-size: 61px;
+  font-weight: 400;
+  line-height: 1.35;
+  max-width: 75%;
+  margin-bottom: 54px;
+  color: var(--mono-fg);
+}
+.mk-theme-monochrome .mono-quote-attr {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mk-theme-monochrome .mono-quote-attr .mono-label {
+  color: var(--mono-fg-3);
+}
+
+/* ── 9. Dense ────────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-dense {
+  grid-template-rows: auto auto 1fr auto;
+}
+.mk-theme-monochrome .mono-dense-hl {
+  font-family: var(--mono-f-display);
+  font-size: 61px;
+  font-weight: 300;
+  line-height: 1.2;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--mono-border);
+  max-width: 88%;
+}
+.mk-theme-monochrome .mono-dense-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 77px;
+  padding-top: 32px;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-dense-col h4 {
+  font-family: var(--mono-f-mono);
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mono-fg-3);
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--mono-border);
+}
+.mk-theme-monochrome .mono-dense-col p {
+  font-family: var(--mono-f-display);
+  font-size: 21px;
+  line-height: 1.75;
+  font-weight: 300;
+  color: var(--mono-fg-2);
+  margin-bottom: 15px;
+}
+.mk-theme-monochrome .mono-dense-col p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── 10. Chart (bar) ─────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-chart-body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-shrink: 0;
+}
+.mk-theme-monochrome .mono-chart-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-bar-track {
+  height: 302px;
+  display: flex;
+  align-items: flex-end;
+  gap: 77px;
+  border-left: 1px solid var(--mono-border);
+  padding-left: 10px;
+}
+.mk-theme-monochrome .mono-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 11px;
+  height: 100%;
+}
+.mk-theme-monochrome .mono-bar-fill {
+  width: 100%;
+  background: var(--mono-fg-3);
+  opacity: 0.5;
+}
+.mk-theme-monochrome .mono-bar-fill.mono-accent {
+  background: var(--mono-accent);
+  opacity: 1;
+}
+.mk-theme-monochrome .mono-bar-x {
+  font-family: var(--mono-f-mono);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--mono-fg-3);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.mk-theme-monochrome .mono-bar-val {
+  font-family: var(--mono-f-display);
+  font-size: 21px;
+  font-weight: 300;
+  color: var(--mono-fg-2);
+}
+.mk-theme-monochrome .mono-bar-val.mono-hi {
+  color: var(--mono-accent);
+  font-weight: 500;
+}
+.mk-theme-monochrome .mono-chart-baseline {
+  height: 1px;
+  background: var(--mono-border);
+  flex-shrink: 0;
+}
+.mk-theme-monochrome .mono-chart-source {
+  flex-shrink: 0;
+  font-family: var(--mono-f-mono);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--mono-fg-3);
+  letter-spacing: 0.06em;
+  margin-top: 16px;
+}
+
+/* ── 11. Diagram (flow) ──────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-diagram-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 54px;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-flow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+.mk-theme-monochrome .mono-flow-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-right: 62px;
+  padding-top: 32px;
+  border-top: 1px solid var(--mono-border);
+}
+.mk-theme-monochrome .mono-flow-num {
+  font-family: var(--mono-f-display);
+  font-size: 67px;
+  font-weight: 200;
+  line-height: 1;
+  color: var(--mono-fg-3);
+  letter-spacing: -0.02em;
+}
+.mk-theme-monochrome .mono-flow-title {
+  font-family: var(--mono-f-display);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--mono-fg);
+}
+.mk-theme-monochrome .mono-flow-desc {
+  font-family: var(--mono-f-display);
+  font-size: 21px;
+  font-weight: 300;
+  color: var(--mono-fg-2);
+  line-height: 1.68;
+}
+
+/* ── 12. Pie (donut) ─────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-pie-body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-pie-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 108px;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-pie-donut {
+  width: 454px;
+  height: 454px;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+}
+.mk-theme-monochrome .mono-pie-donut::after {
+  content: "";
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  background: var(--mono-bg-light);
+}
+.mk-theme-monochrome .mono-pie-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.mk-theme-monochrome .mono-pie-item {
+  display: grid;
+  grid-template-columns: 0.8em 1fr auto;
+  gap: 1em;
+  align-items: center;
+}
+.mk-theme-monochrome .mono-pie-swatch {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 2px;
+}
+.mk-theme-monochrome .mono-pie-item-label {
+  font-family: var(--mono-f-display);
+  font-size: 29px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--mono-fg);
+}
+.mk-theme-monochrome .mono-pie-item-val {
+  font-family: var(--mono-f-mono);
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--mono-accent);
+}
+.mk-theme-monochrome .mono-pie-total {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--mono-border);
+  font-family: var(--mono-f-mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--mono-fg-3);
+}
+
+/* ── 13. Vertical timeline ───────────────────────────────────────────── */
+.mk-theme-monochrome .mono-vtimeline-slide {
+  grid-template-rows: auto auto 1fr auto;
+}
+.mk-theme-monochrome .mono-vt-hl {
+  font-family: var(--mono-f-display);
+  font-size: 61px;
+  font-weight: 200;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--mono-border);
+}
+.mk-theme-monochrome .mono-vtimeline {
+  display: grid;
+  grid-template-columns: 8em 1px 1fr;
+  min-height: 0;
+  padding-top: 32px;
+}
+.mk-theme-monochrome .mono-vt-date {
+  font-family: var(--mono-f-mono);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--mono-fg-3);
+  text-align: right;
+  padding: 0 29px 38px 0;
+  line-height: 1.4;
+}
+.mk-theme-monochrome .mono-vt-spine {
+  background: var(--mono-border);
+  position: relative;
+}
+.mk-theme-monochrome .mono-vt-spine::before {
+  content: "";
+  position: absolute;
+  top: 0.25em;
+  left: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--mono-accent);
+}
+.mk-theme-monochrome .mono-vt-content {
+  padding: 0 0 38px 29px;
+}
+.mk-theme-monochrome .mono-vt-title {
+  font-family: var(--mono-f-display);
+  font-size: 38px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  line-height: 1.25;
+  color: var(--mono-fg);
+}
+.mk-theme-monochrome .mono-vt-body {
+  font-family: var(--mono-f-display);
+  font-size: 21px;
+  font-weight: 300;
+  color: var(--mono-fg-2);
+  line-height: 1.68;
+}
+
+/* ── 14. Cycle ───────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-cycle-body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-cycle-grid {
+  display: grid;
+  grid-template-columns: 1fr 3em 1fr;
+  grid-template-rows: 1fr 3em 1fr;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+  align-items: center;
+}
+.mk-theme-monochrome .mono-cycle-step {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  border-top: 1px solid var(--mono-border);
+}
+.mk-theme-monochrome .mono-cycle-num {
+  font-family: var(--mono-f-display);
+  font-size: 58px;
+  font-weight: 200;
+  color: var(--mono-fg-3);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.mk-theme-monochrome .mono-cycle-title {
+  font-family: var(--mono-f-display);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--mono-fg);
+}
+.mk-theme-monochrome .mono-cycle-desc {
+  font-family: var(--mono-f-display);
+  font-size: 21px;
+  font-weight: 300;
+  color: var(--mono-fg-2);
+  line-height: 1.65;
+}
+.mk-theme-monochrome .mono-cycle-arrow {
+  color: var(--mono-fg-3);
+  font-size: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── 15. Pyramid (centered stack) ────────────────────────────────────── */
+.mk-theme-monochrome .mono-pyr-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-pyr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
+}
+.mk-theme-monochrome .mono-pyr-level {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 38px;
+  border-radius: 2px;
+  font-family: var(--mono-f-display);
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--mono-fg);
+  text-align: center;
+}
+.mk-theme-monochrome .mono-pyr-level:nth-child(1) {
+  background: rgba(26, 26, 22, 0.9);
+  color: var(--mono-bg-light);
+  width: 30%;
+}
+.mk-theme-monochrome .mono-pyr-level:nth-child(2) {
+  background: rgba(26, 26, 22, 0.68);
+  color: var(--mono-bg-light);
+  width: 48%;
+}
+.mk-theme-monochrome .mono-pyr-level:nth-child(3) {
+  background: rgba(26, 26, 22, 0.46);
+  width: 66%;
+}
+.mk-theme-monochrome .mono-pyr-level:nth-child(4) {
+  background: rgba(26, 26, 22, 0.28);
+  width: 83%;
+}
+.mk-theme-monochrome .mono-pyr-level:nth-child(5) {
+  background: rgba(26, 26, 22, 0.14);
+  width: 100%;
+}
+
+/* ── 16. End ─────────────────────────────────────────────────────────── */
+.mk-theme-monochrome .mono-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+.mk-theme-monochrome .mono-end-title {
+  max-width: 55%;
+}
+.mk-theme-monochrome .mono-end-lead {
+  max-width: 42%;
+  margin-top: 32px;
+}
+
+/* ── 17–19. Image variants (ImageFull / ImageLeft / ImageRight) ───────── */
+.mk-theme-monochrome .mono-fig {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-imgfull-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-imgfull-body .mono-fig {
+  flex: 1;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-imgfull-body .mono-fig img,
+.mk-theme-monochrome .mono-imgfull-body .mono-img-ph {
+  width: 100%;
+  height: auto;
+  flex: 1;
+  min-height: 0;
+  object-fit: cover;
+  display: block;
+}
+.mk-theme-monochrome .mono-imgrow-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 108px;
+  align-items: center;
+  min-height: 0;
+}
+.mk-theme-monochrome .mono-imgrow-text {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.mk-theme-monochrome .mono-imgrow-body .mono-fig img,
+.mk-theme-monochrome .mono-imgrow-body .mono-img-ph {
+  width: 100%;
+  height: 620px;
+  object-fit: cover;
+  display: block;
+}

@@ -5,13 +5,15 @@
     "broadside",
     "block-frame",
     "soft-editorial",
-    "studio"
+    "studio",
+    "monochrome"
   ],
   "themes": [
     "broadside",
     "block-frame",
     "soft-editorial",
-    "studio"
+    "studio",
+    "monochrome"
   ],
   "layouts": [
     "cover",

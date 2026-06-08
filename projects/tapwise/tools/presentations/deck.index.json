@@ -1,8 +1,26 @@
 {
   "schemaVersion": 1,
   "clientId": "tapwise",
-  "generatedAt": "2026-05-25T09:48:28.118Z",
+  "generatedAt": "2026-06-08T10:04:04.947Z",
   "decks": [
+    {
+      "id": "tap-master-template-f93dd0",
+      "title": "Tap — Master Template",
+      "themeId": "soft-editorial",
+      "slideCount": 1,
+      "revision": "0001",
+      "updatedAt": "2026-06-08T10:04:04.894Z",
+      "path": "decks/tap-master-template-f93dd0/deck.tsx"
+    },
+    {
+      "id": "nl-alert-burgernet-ui-changes-68cb0c",
+      "title": "NL-Alert & Burgernet — UI Changes",
+      "themeId": "soft-editorial",
+      "slideCount": 1,
+      "revision": "0001",
+      "updatedAt": "2026-06-01T14:51:46.987Z",
+      "path": "decks/nl-alert-burgernet-ui-changes-68cb0c/deck.tsx"
+    },
     {
       "id": "tapwise-done-jira-stories-7058aa",
       "title": "Tapwise Done Jira Stories",

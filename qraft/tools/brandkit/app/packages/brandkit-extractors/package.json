@@ -1,0 +1,26 @@
+{
+  "name": "@qraft/brandkit-extractors",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch"
+  },
+  "dependencies": {
+    "@qraft/brandkit-core": "*",
+    "fast-xml-parser": "^4.4.0",
+    "jszip": "^3.10.1",
+    "node-fetch": "^3.3"
+  },
+  "devDependencies": {
+    "@types/jszip": "*"
+  }
+}

@@ -6,6 +6,30 @@
       "name": "Presentations",
       "kind": "mcp",
       "command": "bash qraft/tools/presentations/scripts/start-presentations-mcp.sh"
+    },
+    {
+      "id": "brandkit",
+      "name": "Brandkit",
+      "kind": "mcp",
+      "command": "bash qraft/tools/brandkit/scripts/start-brandkit-mcp.sh"
+    },
+    {
+      "id": "impeccable",
+      "name": "Impeccable",
+      "kind": "skill",
+      "command": "qraft/skills/impeccable/SKILL.md"
+    },
+    {
+      "id": "lms-jira",
+      "name": "LMS Jira MCP",
+      "kind": "mcp",
+      "command": "node projects/lms/mcp/jira-mcp-codex/dist/index.js"
+    },
+    {
+      "id": "lms-phrase",
+      "name": "LMS Phrase MCP",
+      "kind": "mcp",
+      "command": "node projects/lms/mcp/phrase-mcp-codex/dist/index.js"
     }
   ]
 }

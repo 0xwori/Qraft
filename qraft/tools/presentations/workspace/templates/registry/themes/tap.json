@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "tap",
+  "name": "Tapwise",
+  "sourceTemplateId": "tap",
+  "colors": {
+    "bg": "#FAF8F6",
+    "primary": "#FD6521",
+    "text": "#121212",
+    "muted": "#6B6B6B",
+    "border": "#E5E0D8",
+    "surface": "#FFFFFF",
+    "surface-alt": "#EEF7EE",
+    "text-muted": "#6B6B6B",
+    "tag-bg": "#FFF3EB",
+    "tag-text": "#FD6521"
+  },
+  "typography": {
+    "display": "Inter, sans-serif",
+    "body": "Inter, sans-serif",
+    "mono": "monospace"
+  },
+  "spacing": {
+    "slidePadding": 48,
+    "grid": 8,
+    "radius": 8
+  },
+  "exportCompatibility": {
+    "html": "native",
+    "pdf": "native",
+    "pptx": "native"
+  },
+  "description": "Tapwise maakt examenstof oefenbaar via AI-quizzen, uitleg, podcasts en adaptieve practice."
+}
