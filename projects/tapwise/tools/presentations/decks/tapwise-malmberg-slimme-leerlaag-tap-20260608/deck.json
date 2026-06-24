@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "tapwise-malmberg-slimme-leerlaag-tap-20260608",
+  "clientId": "tapwise",
+  "title": "Tapwise x Malmberg - Slimme leerlaag",
+  "themeId": "tap",
+  "revision": "0003",
+  "createdAt": "2026-06-08T14:30:00.000Z",
+  "updatedAt": "2026-06-08T15:05:00.000Z",
+  "slides": [
+    {
+      "id": "slide-01",
+      "layoutId": "cover",
+      "title": "TapWise",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    },
+    {
+      "id": "slide-02",
+      "layoutId": "detail",
+      "title": "TapEngine",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    },
+    {
+      "id": "slide-03",
+      "layoutId": "detail",
+      "title": "TapEngine - MCP-systeem voor educatie",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    },
+    {
+      "id": "slide-04",
+      "layoutId": "detail",
+      "title": "Technische voorbeelden",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    },
+    {
+      "id": "slide-05",
+      "layoutId": "detail",
+      "title": "TapEngine - Skills",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    },
+    {
+      "id": "slide-06",
+      "layoutId": "detail",
+      "title": "Hoe ziet uit - Manier 1 Tapwise UI",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    },
+    {
+      "id": "slide-07",
+      "layoutId": "detail",
+      "title": "Hoe ziet uit - Manier 2 Integratie",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    },
+    {
+      "id": "slide-08",
+      "layoutId": "detail",
+      "title": "Hoe ziet uit - Manier 3 kanalen",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    },
+    {
+      "id": "slide-09",
+      "layoutId": "detail",
+      "title": "Hoe ziet uit - Manier 3 vervolg",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    },
+    {
+      "id": "slide-10",
+      "layoutId": "detail",
+      "title": "Human in the loop backend",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    },
+    {
+      "id": "slide-11",
+      "layoutId": "closing",
+      "title": "Samenwerking",
+      "blocks": [],
+      "createdAt": "2026-06-08T14:30:00.000Z",
+      "updatedAt": "2026-06-08T14:45:00.000Z"
+    }
+  ],
+  "assets": [],
+  "metadata": {
+    "productContextSource": "client",
+    "designContextSource": "client",
+    "importedTemplateIds": []
+  }
+}

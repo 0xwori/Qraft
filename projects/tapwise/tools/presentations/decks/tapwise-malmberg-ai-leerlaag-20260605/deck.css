@@ -1,0 +1,20 @@
+.mk-theme-broadside .broad-foot span:last-child,
+.mk-theme-broadside .broad-end .broad-cover-meta span:first-child,
+.mk-theme-broadside .broad-end .broad-cover-meta span:last-child {
+  font-size: 0;
+}
+
+.mk-theme-broadside .broad-foot span:last-child::after,
+.mk-theme-broadside .broad-end .broad-cover-meta span:first-child::after,
+.mk-theme-broadside .broad-end .broad-cover-meta span:last-child::after {
+  font-size: 14px;
+}
+
+.mk-theme-broadside .broad-foot span:last-child::after,
+.mk-theme-broadside .broad-end .broad-cover-meta span:first-child::after {
+  content: "TAPWISE";
+}
+
+.mk-theme-broadside .broad-end .broad-cover-meta span:last-child::after {
+  content: "MALMBERG GESPREK";
+}

@@ -1,0 +1,21 @@
+{
+  "name": "ad-posters",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @qraft-ad-posters/core && npm run build -w @qraft-ad-posters/exporters && npm run build -w @qraft-ad-posters/mcp-server && npm run typecheck -w @qraft-ad-posters/runtime && npm run typecheck -w @qraft-ad-posters/templates && npm run build -w @qraft-ad-posters/web-ui",
+    "dev:mcp": "npm run dev -w @qraft-ad-posters/mcp-server",
+    "start:mcp": "npm run start -w @qraft-ad-posters/mcp-server",
+    "start:ui": "npm run start:ui -w @qraft-ad-posters/mcp-server",
+    "test": "vitest run --exclude '**/dist/**'"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.17",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.14"
+  }
+}

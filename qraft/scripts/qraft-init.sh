@@ -51,6 +51,9 @@ ensure_dir "${QRAFT_CORE_ROOT}/tools/presentations/app"
 ensure_dir "${QRAFT_CORE_ROOT}/tools/presentations/scripts"
 ensure_dir "${QRAFT_CORE_ROOT}/tools/presentations/workspace/global"
 ensure_dir "${QRAFT_CORE_ROOT}/tools/presentations/workspace/templates/registry"
+ensure_dir "${QRAFT_CORE_ROOT}/tools/ad-posters/app"
+ensure_dir "${QRAFT_CORE_ROOT}/tools/ad-posters/scripts"
+ensure_dir "${QRAFT_CORE_ROOT}/tools/ad-posters/workspace/global"
 
 ensure_json_file "${QRAFT_CORE_ROOT}/registry/tools.json" '{
   "schemaVersion": 1,
@@ -60,6 +63,12 @@ ensure_json_file "${QRAFT_CORE_ROOT}/registry/tools.json" '{
       "name": "Presentations",
       "kind": "mcp",
       "command": "bash qraft/tools/presentations/scripts/start-presentations-mcp.sh"
+    },
+    {
+      "id": "ad-posters",
+      "name": "Ad Posters",
+      "kind": "mcp",
+      "command": "bash qraft/tools/ad-posters/scripts/start-ad-posters-mcp.sh"
     }
   ]
 }'
@@ -114,6 +123,18 @@ cat > "${REPO_ROOT}/plugins/qraft/.mcp.json" <<EOF
       "command": "bash",
       "args": [
         "${REPO_ROOT}/qraft/tools/presentations/scripts/start-presentations-mcp.sh"
+      ]
+    },
+    "brandkit": {
+      "command": "bash",
+      "args": [
+        "${REPO_ROOT}/qraft/tools/brandkit/scripts/start-brandkit-mcp.sh"
+      ]
+    },
+    "ad-posters": {
+      "command": "bash",
+      "args": [
+        "${REPO_ROOT}/qraft/tools/ad-posters/scripts/start-ad-posters-mcp.sh"
       ]
     },
     "lms-jira": {
@@ -172,6 +193,23 @@ if (index >= 0) {
 writeFileSync(marketplacePath, `${JSON.stringify(marketplace, null, 2)}\n`);
 NODE
 
+ensure_file "${QRAFT_CORE_ROOT}/tools/ad-posters/workspace/global/PRODUCT.md" '# Qraft Ad Posters Product Context
+
+Ad Posters creates browser-rendered ad campaigns from React source files.
+
+This file is context input for Ad Posters. It is read-only in normal ad-poster editing mode.'
+
+ensure_file "${QRAFT_CORE_ROOT}/tools/ad-posters/workspace/global/DESIGN.md" '# Qraft Ad Posters Design Context
+
+Use this file for shared ad creative guidance, brand notes, typography, motion rules, and platform-safe design direction.
+
+This file is context input for Ad Posters. It is read-only in normal ad-poster editing mode.'
+
+ensure_json_file "${QRAFT_CORE_ROOT}/tools/ad-posters/workspace/client.registry.json" '{
+  "schemaVersion": 1,
+  "clients": []
+}'
+
 ensure_project_presentations() {
   local project_id="$1"
   local project_name="$2"
@@ -212,10 +250,45 @@ Generated decks belong under \`decks/\`. Exports belong under \`exports/\`."
 }'
 }
 
+ensure_project_ad_posters() {
+  local project_id="$1"
+  local project_name="$2"
+  local project_root="${REPO_ROOT}/projects/${project_id}"
+  local ad_root="${project_root}/tools/ad-posters"
+
+  ensure_dir "${ad_root}/campaigns"
+  ensure_dir "${ad_root}/assets"
+  ensure_dir "${ad_root}/exports"
+
+  ensure_file "${ad_root}/PRODUCT.md" "# ${project_name} Ad Posters Product Context
+
+Use this file for project-specific ad campaign context.
+
+Do not store secrets here."
+
+  ensure_file "${ad_root}/DESIGN.md" "# ${project_name} Ad Posters Design Context
+
+Use this file for project-specific ad design guidance.
+
+Do not store secrets here."
+
+  ensure_file "${ad_root}/AGENTS.md" "# ${project_name} Ad Posters Guide
+
+This folder stores code-first ad campaign data and context for this project.
+
+Generated campaigns belong under \`campaigns/\`. Exports belong inside each campaign \`.export/\` folder."
+
+  ensure_json_file "${ad_root}/campaign.index.json" '{
+  "schemaVersion": 1,
+  "campaigns": []
+}'
+}
+
 if [ -f "${QRAFT_CORE_ROOT}/registry/projects.json" ]; then
   while IFS=$'\t' read -r project_id project_name; do
     [ -n "${project_id}" ] || continue
     ensure_project_presentations "${project_id}" "${project_name}"
+    ensure_project_ad_posters "${project_id}" "${project_name}"
   done < <(node --input-type=module - "${QRAFT_CORE_ROOT}" <<'NODE'
 import { readFileSync } from "node:fs";
 import path from "node:path";

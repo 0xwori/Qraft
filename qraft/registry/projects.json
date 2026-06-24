@@ -25,6 +25,16 @@
         "release-advice",
         "cutoff-dry-run"
       ]
+    },
+    {
+      "id": "q-tapwise",
+      "name": "q-Tapwise",
+      "root": "projects/q-tapwise",
+      "tools": [
+        "presentations",
+        "ad-posters"
+      ],
+      "scripts": []
     }
   ]
 }

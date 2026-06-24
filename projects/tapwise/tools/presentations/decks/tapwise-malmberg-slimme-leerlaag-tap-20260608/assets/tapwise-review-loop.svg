@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="Tapwise human review illustration">
+  <rect width="1000" height="700" rx="42" fill="#fbfaf8"/>
+  <rect x="88" y="92" width="824" height="512" rx="38" fill="#ffffff" stroke="#e8e1d8" stroke-width="3"/>
+  <rect x="150" y="170" width="304" height="354" rx="32" fill="#eef7ff" stroke="#151515" stroke-width="5"/>
+  <circle cx="254" cy="278" r="54" fill="#ffffff" stroke="#151515" stroke-width="5"/>
+  <path d="M230 284 C244 304 266 304 280 284" fill="none" stroke="#151515" stroke-width="7" stroke-linecap="round"/>
+  <path d="M202 470 C222 388 286 376 326 470" fill="#fff0e7" stroke="#151515" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="526" y="146" width="286" height="134" rx="24" fill="#fff6df" stroke="#151515" stroke-width="5"/>
+  <path d="M570 188 H752 M570 230 H704" stroke="#151515" stroke-width="11" stroke-linecap="round"/>
+  <rect x="526" y="322" width="286" height="134" rx="24" fill="#eef8ee" stroke="#151515" stroke-width="5"/>
+  <path d="M570 364 H752 M570 406 H704" stroke="#151515" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="812" cy="456" r="42" fill="#ff5a1f" stroke="#151515" stroke-width="5"/>
+  <path d="M792 458 L808 474 L836 432" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M454 238 C498 214 516 214 526 214 M454 414 C498 390 516 390 526 390" fill="none" stroke="#151515" stroke-width="8" stroke-linecap="round"/>
+  <path d="M490 186 L526 214 L486 234 M490 362 L526 390 L486 410" fill="none" stroke="#151515" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M626 528 C680 568 760 562 810 508" fill="none" stroke="#ff5a1f" stroke-width="8" stroke-linecap="round" stroke-dasharray="16 18"/>
+  <circle cx="626" cy="528" r="30" fill="#ffffff" stroke="#151515" stroke-width="5"/>
+  <path d="M616 528 H636 M626 518 V538" stroke="#151515" stroke-width="7" stroke-linecap="round"/>
+</svg>

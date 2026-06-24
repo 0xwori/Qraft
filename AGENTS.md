@@ -35,6 +35,16 @@ packaging.
 - The Brandkit MCP server is started by `qraft/tools/brandkit/scripts/start-brandkit-mcp.sh`.
 - Per-brand output data lives in `projects/<project>/tools/brandkit/<slug>/`, not inside the shared app source.
 
+## Design Review Procedure
+
+When a new or revised design is ready, always do a quick check with the Impeccable skill before final handoff:
+
+```text
+/Users/woutervanrijmenam/.agents/skills/impeccable/SKILL.md
+```
+
+For the quick check, verify brand fit, visual hierarchy, spacing, typography, text fit, imagery/icons, motion, accessibility basics, and whether the design feels specific instead of generic. If the check finds issues, fix them and re-preview before saying the design is done.
+
 ## Project Rules
 
 Each project should have:

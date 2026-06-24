@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "linkedin-first-banner-44efbd",
+  "clientId": "q-tapwise",
+  "title": "LinkedIn First Banner",
+  "durationMs": 4200,
+  "fps": 30,
+  "revision": "0009",
+  "createdAt": "2026-05-27T14:57:46.611Z",
+  "updatedAt": "2026-05-27T15:49:50.000Z",
+  "variants": [
+    {
+      "id": "landscape-1200x628",
+      "label": "A - Product Proof",
+      "width": 1200,
+      "height": 628,
+      "placement": "LinkedIn landscape/link ad"
+    },
+    {
+      "id": "linkedin-topic-cards",
+      "label": "B - Topic Cards",
+      "width": 1200,
+      "height": 628,
+      "placement": "LinkedIn landscape/link ad"
+    },
+    {
+      "id": "linkedin-parent-focus",
+      "label": "C - Parent Focus",
+      "width": 1200,
+      "height": 628,
+      "placement": "LinkedIn landscape/link ad"
+    }
+  ]
+}

@@ -30,6 +30,12 @@
       "name": "LMS Phrase MCP",
       "kind": "mcp",
       "command": "node projects/lms/mcp/phrase-mcp-codex/dist/index.js"
+    },
+    {
+      "id": "ad-posters",
+      "name": "Ad Posters",
+      "kind": "mcp",
+      "command": "bash qraft/tools/ad-posters/scripts/start-ad-posters-mcp.sh"
     }
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "clients": [
+    {
+      "id": "q-tapwise",
+      "name": "q-Tapwise",
+      "root": "../../../projects/q-tapwise/tools/ad-posters"
+    }
+  ]
+}

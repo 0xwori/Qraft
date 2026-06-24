@@ -42,6 +42,7 @@ check_file ".agents/plugins/marketplace.json"
 check_core_file "registry/projects.json"
 check_core_file "registry/tools.json"
 check_core_file "tools/presentations/app/package-lock.json"
+check_core_file "tools/ad-posters/app/package-lock.json"
 
 node --input-type=module - "${REPO_ROOT}" "${QRAFT_CORE_ROOT}" <<'NODE' || failures=$((failures + 1))
 import { readFileSync } from "node:fs";
@@ -72,6 +73,11 @@ const presentations = mcp.mcpServers?.["presentations"];
 if (!presentations) throw new Error("Presentations MCP server must be configured");
 if (!presentations.args?.includes("./qraft/tools/presentations/scripts/start-presentations-mcp.sh")) {
   throw new Error("Presentations MCP server must use the qraft tool script");
+}
+const adPosters = mcp.mcpServers?.["ad-posters"];
+if (!adPosters) throw new Error("Ad Posters MCP server must be configured");
+if (!adPosters.args?.includes("./qraft/tools/ad-posters/scripts/start-ad-posters-mcp.sh")) {
+  throw new Error("Ad Posters MCP server must use the qraft tool script");
 }
 
 const projects = readQraftJson("registry/projects.json");
@@ -121,6 +127,18 @@ if [ -f "${QRAFT_CORE_ROOT}/tools/presentations/app/packages/mcp-server/dist/ind
   pass "Presentations MCP build exists"
 else
   fail "Presentations MCP build is missing; run npm run presentations:setup"
+fi
+
+if [ -d "${QRAFT_CORE_ROOT}/tools/ad-posters/app/node_modules" ]; then
+  pass "Ad Posters dependencies are installed"
+else
+  fail "Ad Posters dependencies are missing; run bash qraft/tools/ad-posters/scripts/setup.sh"
+fi
+
+if [ -f "${QRAFT_CORE_ROOT}/tools/ad-posters/app/packages/mcp-server/dist/index.js" ]; then
+  pass "Ad Posters MCP build exists"
+else
+  fail "Ad Posters MCP build is missing; run bash qraft/tools/ad-posters/scripts/setup.sh"
 fi
 
 # Claude Desktop integration is optional and per-machine, so this section only warns.

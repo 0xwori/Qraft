@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="Tapwise integration illustration">
+  <rect width="1000" height="700" rx="42" fill="#fbfaf8"/>
+  <rect x="86" y="88" width="328" height="488" rx="34" fill="#ffffff" stroke="#151515" stroke-width="5"/>
+  <rect x="132" y="146" width="236" height="26" rx="13" fill="#151515"/>
+  <path d="M132 226 H352 M132 280 H300 M132 334 H344 M132 388 H286" stroke="#e2ddd5" stroke-width="17" stroke-linecap="round"/>
+  <rect x="606" y="88" width="308" height="488" rx="34" fill="#eef7ff" stroke="#151515" stroke-width="5"/>
+  <rect x="652" y="146" width="180" height="26" rx="13" fill="#151515"/>
+  <path d="M652 226 H848 M652 280 H810 M652 334 H846 M652 388 H782" stroke="#ffffff" stroke-width="17" stroke-linecap="round"/>
+  <rect x="420" y="258" width="176" height="154" rx="28" fill="#ff5a1f" stroke="#151515" stroke-width="5"/>
+  <path d="M466 316 H552 M466 358 H526" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+  <path d="M414 336 H320 M596 336 H698" stroke="#151515" stroke-width="8" stroke-linecap="round"/>
+  <path d="M352 306 L320 336 L352 366 M666 306 L698 336 L666 366" fill="none" stroke="#151515" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="508" cy="516" r="50" fill="#eef8ee" stroke="#151515" stroke-width="5"/>
+  <path d="M486 516 L502 532 L532 490" fill="none" stroke="#151515" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M508 412 V466" stroke="#151515" stroke-width="8" stroke-linecap="round" stroke-dasharray="14 18"/>
+  <circle cx="214" cy="596" r="34" fill="#fff6df" stroke="#151515" stroke-width="5"/>
+  <circle cx="780" cy="596" r="34" fill="#fff6df" stroke="#151515" stroke-width="5"/>
+</svg>

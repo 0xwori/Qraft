@@ -73,7 +73,7 @@ registry.projects.push({
   id,
   name,
   root: `projects/${id}`,
-  tools: ["presentations"],
+  tools: ["presentations", "ad-posters"],
   scripts: []
 });
 writeFileSync(registryPath, `${JSON.stringify(registry, null, 2)}\n`);

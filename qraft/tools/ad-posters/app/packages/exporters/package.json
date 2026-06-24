@@ -1,0 +1,19 @@
+{
+  "name": "@qraft-ad-posters/exporters",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@qraft-ad-posters/core": "0.1.0",
+    "playwright": "^1.57.0"
+  }
+}

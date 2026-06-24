@@ -1,8 +1,17 @@
 {
   "schemaVersion": 1,
   "clientId": "tapwise",
-  "generatedAt": "2026-06-08T10:04:04.947Z",
+  "generatedAt": "2026-06-08T14:30:00.000Z",
   "decks": [
+    {
+      "id": "tapwise-malmberg-slimme-leerlaag-tap-20260608",
+      "title": "Tapwise x Malmberg - Slimme leerlaag",
+      "themeId": "tap",
+      "slideCount": 11,
+      "revision": "0004",
+      "updatedAt": "2026-06-08T15:35:00.000Z",
+      "path": "decks/tapwise-malmberg-slimme-leerlaag-tap-20260608/deck.tsx"
+    },
     {
       "id": "tap-master-template-f93dd0",
       "title": "Tap — Master Template",
@@ -20,6 +29,15 @@
       "revision": "0001",
       "updatedAt": "2026-06-01T14:51:46.987Z",
       "path": "decks/nl-alert-burgernet-ui-changes-68cb0c/deck.tsx"
+    },
+    {
+      "id": "tapwise-malmberg-ai-leerlaag-20260605",
+      "title": "Tapwise x Malmberg: AI-leerlaag",
+      "themeId": "broadside",
+      "slideCount": 10,
+      "revision": "0001",
+      "updatedAt": "2026-06-05T00:00:00.000Z",
+      "path": "decks/tapwise-malmberg-ai-leerlaag-20260605/deck.tsx"
     },
     {
       "id": "tapwise-done-jira-stories-7058aa",

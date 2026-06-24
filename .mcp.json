@@ -23,6 +23,12 @@
       "args": [
         "./projects/lms/mcp/phrase-mcp-codex/dist/index.js"
       ]
+    },
+    "ad-posters": {
+      "command": "bash",
+      "args": [
+        "./qraft/tools/ad-posters/scripts/start-ad-posters-mcp.sh"
+      ]
     }
   }
 }

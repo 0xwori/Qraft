@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "clientId": "q-tapwise",
+  "generatedAt": "2026-05-27T15:34:03.959Z",
+  "campaigns": [
+    {
+      "id": "linkedin-first-banner-44efbd",
+      "title": "LinkedIn First Banner",
+      "durationMs": 4200,
+      "fps": 30,
+      "variantCount": 3,
+      "updatedAt": "2026-05-27T15:34:03.949Z",
+      "path": "campaigns/linkedin-first-banner-44efbd"
+    }
+  ]
+}

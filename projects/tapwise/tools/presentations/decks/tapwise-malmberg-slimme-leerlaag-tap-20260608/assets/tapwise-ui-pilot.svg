@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="Tapwise pilot interface illustration">
+  <rect width="1000" height="700" rx="42" fill="#fbfaf8"/>
+  <rect x="74" y="70" width="852" height="560" rx="34" fill="#ffffff" stroke="#e8e1d8" stroke-width="3"/>
+  <rect x="112" y="116" width="776" height="72" rx="36" fill="#ffffff" stroke="#e8e1d8" stroke-width="3"/>
+  <circle cx="154" cy="152" r="17" fill="#ff5a1f"/>
+  <path d="M204 152 H352 M724 152 H792" stroke="#151515" stroke-width="9" stroke-linecap="round"/>
+  <rect x="118" y="236" width="322" height="274" rx="28" fill="#eef7ff" stroke="#151515" stroke-width="5"/>
+  <rect x="154" y="276" width="192" height="24" rx="12" fill="#151515"/>
+  <path d="M154 338 H382 M154 390 H326 M154 442 H364" stroke="#ffffff" stroke-width="18" stroke-linecap="round"/>
+  <rect x="516" y="230" width="326" height="286" rx="30" fill="#fff6df" stroke="#151515" stroke-width="5"/>
+  <circle cx="604" cy="330" r="56" fill="#ffffff" stroke="#151515" stroke-width="5"/>
+  <path d="M578 334 L600 356 L638 302" fill="none" stroke="#ff5a1f" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="566" y="426" width="226" height="34" rx="17" fill="#151515"/>
+  <path d="M564 540 C454 610 316 606 224 548" fill="none" stroke="#ff5a1f" stroke-width="7" stroke-linecap="round" stroke-dasharray="16 18"/>
+  <circle cx="218" cy="548" r="38" fill="#eef8ee" stroke="#151515" stroke-width="5"/>
+  <circle cx="560" cy="540" r="38" fill="#eef8ee" stroke="#151515" stroke-width="5"/>
+  <path d="M210 548 H226 M552 540 H568" stroke="#151515" stroke-width="8" stroke-linecap="round"/>
+</svg>

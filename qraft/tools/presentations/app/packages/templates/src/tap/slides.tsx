@@ -18,11 +18,11 @@ export interface CoverProps {
 }
 
 export function Cover({
-  title = "Examenbundel",
+  title = "Van examenstof naar een slimme oefenroute",
   image = IMAGE_PLACEHOLDER_SRC,
   alt = "",
-  metaLeft = <>[Vak] · [Niveau]<br />[Datum]</>,
-  metaCenter = "[Presentatietitel]",
+  metaLeft = <>Tapwise<br />Examenbundel</>,
+  metaCenter = "Slim oefenen",
   metaRight = "Tapwise",
 }: CoverProps) {
   return (
@@ -232,7 +232,12 @@ function TapDiagram({ items = DEFAULT_DIAGRAM_ITEMS }: { items?: DiagramItem[] }
     <div className="tap-diagram">
       {items.slice(0, 4).map((item, index) => (
         <article className="tap-diagram-node" key={`${item.label}-${item.title}`}>
-          <div className="tap-diagram-index">{item.label}</div>
+          <div className="tap-diagram-top">
+            <div className="tap-diagram-index">{item.label}</div>
+            <div className="tap-diagram-icon" aria-hidden="true">
+              <NodeIcon index={index} />
+            </div>
+          </div>
           <h3 className="tap-h3">{item.title}</h3>
           <p className="tap-body">{item.body}</p>
           {index < Math.min(items.length, 4) - 1 ? <span className="tap-diagram-line" /> : null}
@@ -363,7 +368,7 @@ export function List({
   ],
 }: ListProps) {
   return (
-    <section className="tap-slide tap-dark tap-list">
+    <section className="tap-slide tap-light tap-list">
       <Chrome label={label} page={page} />
       <div className="tap-list-body">
         <div className="tap-list-head">
@@ -529,7 +534,9 @@ export function End({
       <div className="tap-end-contacts">
         {contacts.map((contact) => (
           <p className="tap-body" key={`${contact.name}-${contact.email}`}>
-            Neem contact op met {contact.name} via {contact.email} of bel {contact.phone}
+            Neem contact op met {contact.name}
+            {contact.email ? <> via {contact.email}</> : null}
+            {contact.phone ? <> of bel {contact.phone}</> : null}
           </p>
         ))}
       </div>
@@ -563,8 +570,36 @@ function Foot({ footer, page }: Required<Pick<TapChromeProps, "footer" | "page">
 function TagList({ items }: { items: string[] }) {
   return (
     <ul className="tap-tag-list">
-      {items.map((item) => <li key={item}>{item}</li>)}
+      {items.map((item) => (
+        <li key={item}>
+          <span className="tap-tag-icon" aria-hidden="true">
+            <CheckIcon />
+          </span>
+          <span>{item}</span>
+        </li>
+      ))}
     </ul>
   );
 }
 
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" focusable="false">
+      <path d="M5 12.5 10 17 19 7" />
+    </svg>
+  );
+}
+
+function NodeIcon({ index }: { index: number }) {
+  const icons = [
+    <path key="doc" d="M7 4h8l4 4v12H7V4Zm8 0v5h4M10 13h6M10 16h5" />,
+    <path key="spark" d="M12 4v5M12 15v5M4 12h5M15 12h5M7 7l3 3M14 14l3 3M17 7l-3 3M10 14l-3 3" />,
+    <path key="check" d="M5 12.5 10 17 19 7M4 4h16v16H4z" />,
+    <path key="route" d="M6 6h.1M18 18h.1M7 6c7 0 10 3 10 10M14 16h4v-4" />,
+  ];
+  return (
+    <svg viewBox="0 0 24 24" focusable="false">
+      {icons[index % icons.length]}
+    </svg>
+  );
+}

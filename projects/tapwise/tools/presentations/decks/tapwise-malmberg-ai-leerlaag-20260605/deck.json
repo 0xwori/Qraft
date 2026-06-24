@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "tapwise-malmberg-ai-leerlaag-20260605",
+  "clientId": "tapwise",
+  "title": "Tapwise x Malmberg: AI-leerlaag",
+  "themeId": "broadside",
+  "revision": "0001",
+  "createdAt": "2026-06-05T00:00:00.000Z",
+  "updatedAt": "2026-06-05T00:00:00.000Z",
+  "slides": [
+    { "id": "slide-01-cover", "layoutId": "cover", "title": "Van examenstof naar persoonlijke leerinterventies", "blocks": [], "createdAt": "2026-06-05T00:00:00.000Z", "updatedAt": "2026-06-05T00:00:00.000Z" },
+    { "id": "slide-02-waarom", "layoutId": "overview", "title": "Niet meer materiaal. Meer richting.", "blocks": [], "createdAt": "2026-06-05T00:00:00.000Z", "updatedAt": "2026-06-05T00:00:00.000Z" },
+    { "id": "slide-03-vandaag", "layoutId": "detail", "title": "Tapwise als slimme examenbundeltrainer", "blocks": [], "createdAt": "2026-06-05T00:00:00.000Z", "updatedAt": "2026-06-05T00:00:00.000Z" },
+    { "id": "slide-04-technologie", "layoutId": "timeline", "title": "Van bronmateriaal naar interactieve leerervaring", "blocks": [], "createdAt": "2026-06-05T00:00:00.000Z", "updatedAt": "2026-06-05T00:00:00.000Z" },
+    { "id": "slide-05-uitgeverswaarde", "layoutId": "two-column", "title": "Uitgeverscontent als basis voor adaptieve leerervaringen", "blocks": [], "createdAt": "2026-06-05T00:00:00.000Z", "updatedAt": "2026-06-05T00:00:00.000Z" },
+    { "id": "slide-06-interventies", "layoutId": "timeline", "title": "Van fout antwoord naar passende uitleg", "blocks": [], "createdAt": "2026-06-05T00:00:00.000Z", "updatedAt": "2026-06-05T00:00:00.000Z" },
+    { "id": "slide-07-whiteboard", "layoutId": "detail", "title": "Wanneer tekst niet genoeg is", "blocks": [], "createdAt": "2026-06-05T00:00:00.000Z", "updatedAt": "2026-06-05T00:00:00.000Z" },
+    { "id": "slide-08-pilot", "layoutId": "timeline", "title": "AI-examenroute op een vak of hoofdstuk", "blocks": [], "createdAt": "2026-06-05T00:00:00.000Z", "updatedAt": "2026-06-05T00:00:00.000Z" },
+    { "id": "slide-09-discovery", "layoutId": "agenda", "title": "Wat willen we met Malmberg ontdekken?", "blocks": [], "createdAt": "2026-06-05T00:00:00.000Z", "updatedAt": "2026-06-05T00:00:00.000Z" },
+    { "id": "slide-10-open-vraag", "layoutId": "closing", "title": "Waar kan Tapwise aanvullend zijn?", "blocks": [], "createdAt": "2026-06-05T00:00:00.000Z", "updatedAt": "2026-06-05T00:00:00.000Z" }
+  ],
+  "assets": [],
+  "metadata": {
+    "productContextSource": "client",
+    "designContextSource": "client",
+    "importedTemplateIds": ["broadside"]
+  }
+}
